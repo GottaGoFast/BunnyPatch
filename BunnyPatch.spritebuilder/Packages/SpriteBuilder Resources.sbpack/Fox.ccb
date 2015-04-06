@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>3</integer>
+	<integer>4</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -57,7 +57,97 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>bunnysitold.png</string>
+								<string>fox.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.1666666716337204</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>newFox.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.3333333432674408</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>fox.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.5</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>newFox.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.66666668653488159</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>fox.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.83333331346511841</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>newFox.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -74,7 +164,7 @@
 		<key>children</key>
 		<array/>
 		<key>customClass</key>
-		<string>Bunny</string>
+		<string>Fox</string>
 		<key>displayName</key>
 		<string>CCSprite</string>
 		<key>memberVarAssignmentName</key>
@@ -100,7 +190,7 @@
 			<key>density</key>
 			<real>1</real>
 			<key>dynamic</key>
-			<true/>
+			<false/>
 			<key>elasticity</key>
 			<real>0.30000001192092896</real>
 			<key>friction</key>
@@ -108,184 +198,228 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>17.8359375</real>
-					<real>17.3515625</real>
+					<real>47.196586608886719</real>
+					<real>23.744211196899414</real>
 				</array>
 				<array>
-					<real>5.0078125</real>
-					<real>34.57421875</real>
+					<real>4.8975825309753418</real>
+					<real>40.970706939697266</real>
 				</array>
 				<array>
-					<real>17.2734375</real>
-					<real>69.71484375</real>
+					<real>31.84765625</real>
+					<real>47.0390625</real>
 				</array>
 				<array>
-					<real>60.375</real>
-					<real>103.5078125</real>
+					<real>44.347206115722656</real>
+					<real>55.838039398193359</real>
 				</array>
 				<array>
-					<real>43.93359375</real>
-					<real>134.78125</real>
+					<real>42.016128540039062</real>
+					<real>48.589481353759766</real>
 				</array>
 				<array>
-					<real>19.31640625</real>
-					<real>134.82421875</real>
+					<real>129.18011474609375</real>
+					<real>46.855854034423828</real>
 				</array>
 				<array>
-					<real>6.05078125</real>
-					<real>151.484375</real>
+					<real>201.36186218261719</real>
+					<real>53.139301300048828</real>
 				</array>
 				<array>
-					<real>44.37109375</real>
-					<real>153.08984375</real>
+					<real>218.78752136230469</real>
+					<real>51.377586364746094</real>
 				</array>
 				<array>
-					<real>75.46484375</real>
-					<real>107.25</real>
+					<real>178.84767150878906</real>
+					<real>24.226766586303711</real>
 				</array>
 				<array>
-					<real>103.34765625</real>
-					<real>105.421875</real>
+					<real>184.81707763671875</real>
+					<real>12.91349983215332</real>
 				</array>
 				<array>
-					<real>118.22265625</real>
-					<real>143.95703125</real>
+					<real>201.93122863769531</real>
+					<real>10.125396728515625</real>
 				</array>
 				<array>
-					<real>165.62890625</real>
-					<real>145.1328125</real>
+					<real>196.21714782714844</real>
+					<real>3.7576944828033447</real>
 				</array>
 				<array>
-					<real>152.453125</real>
-					<real>125.296875</real>
+					<real>180.92343139648438</real>
+					<real>7.1126103401184082</real>
 				</array>
 				<array>
-					<real>119.52734375</real>
-					<real>117.9921875</real>
+					<real>165.28758239746094</real>
+					<real>17.118635177612305</real>
 				</array>
 				<array>
-					<real>112.69921875</real>
-					<real>103.37890625</real>
+					<real>134.78440856933594</real>
+					<real>11.859025001525879</real>
 				</array>
 				<array>
-					<real>129.79296875</real>
-					<real>59.1875</real>
+					<real>95.753501892089844</real>
+					<real>14.304998397827148</real>
 				</array>
 				<array>
-					<real>123.96484375</real>
-					<real>17.56640625</real>
+					<real>62.291156768798828</real>
+					<real>20.473550796508789</real>
+				</array>
+				<array>
+					<real>52.798324584960938</real>
+					<real>10.324546813964844</real>
+				</array>
+				<array>
+					<real>27.212623596191406</real>
+					<real>4.6691899299621582</real>
+				</array>
+				<array>
+					<real>39.664623260498047</real>
+					<real>12.344134330749512</real>
 				</array>
 			</array>
 			<key>polygons</key>
 			<array>
 				<array>
 					<array>
-						<real>118.22265625</real>
-						<real>143.95703125</real>
+						<real>39.664623260498047</real>
+						<real>12.344134330749512</real>
 					</array>
 					<array>
-						<real>103.34765625</real>
-						<real>105.421875</real>
+						<real>27.212623596191406</real>
+						<real>4.6691899299621582</real>
 					</array>
 					<array>
-						<real>112.69921875</real>
-						<real>103.37890625</real>
-					</array>
-					<array>
-						<real>119.52734375</real>
-						<real>117.9921875</real>
+						<real>52.798324584960938</real>
+						<real>10.324546813964844</real>
 					</array>
 				</array>
 				<array>
 					<array>
-						<real>119.52734375</real>
-						<real>117.9921875</real>
+						<real>47.196586608886719</real>
+						<real>23.744211196899414</real>
 					</array>
 					<array>
-						<real>152.453125</real>
-						<real>125.296875</real>
+						<real>39.664623260498047</real>
+						<real>12.344134330749512</real>
 					</array>
 					<array>
-						<real>165.62890625</real>
-						<real>145.1328125</real>
+						<real>52.798324584960938</real>
+						<real>10.324546813964844</real>
 					</array>
 					<array>
-						<real>118.22265625</real>
-						<real>143.95703125</real>
-					</array>
-				</array>
-				<array>
-					<array>
-						<real>44.37109375</real>
-						<real>153.08984375</real>
-					</array>
-					<array>
-						<real>6.05078125</real>
-						<real>151.484375</real>
-					</array>
-					<array>
-						<real>19.31640625</real>
-						<real>134.82421875</real>
-					</array>
-					<array>
-						<real>43.93359375</real>
-						<real>134.78125</real>
+						<real>62.291156768798828</real>
+						<real>20.473550796508789</real>
 					</array>
 				</array>
 				<array>
 					<array>
-						<real>43.93359375</real>
-						<real>134.78125</real>
+						<real>180.92343139648438</real>
+						<real>7.1126103401184082</real>
 					</array>
 					<array>
-						<real>60.375</real>
-						<real>103.5078125</real>
+						<real>196.21714782714844</real>
+						<real>3.7576944828033447</real>
 					</array>
 					<array>
-						<real>75.46484375</real>
-						<real>107.25</real>
+						<real>201.93122863769531</real>
+						<real>10.125396728515625</real>
 					</array>
 					<array>
-						<real>44.37109375</real>
-						<real>153.08984375</real>
+						<real>184.81707763671875</real>
+						<real>12.91349983215332</real>
 					</array>
 				</array>
 				<array>
 					<array>
-						<real>60.375</real>
-						<real>103.5078125</real>
+						<real>184.81707763671875</real>
+						<real>12.91349983215332</real>
 					</array>
 					<array>
-						<real>17.2734375</real>
-						<real>69.71484375</real>
+						<real>178.84767150878906</real>
+						<real>24.226766586303711</real>
 					</array>
 					<array>
-						<real>5.0078125</real>
-						<real>34.57421875</real>
+						<real>165.28758239746094</real>
+						<real>17.118635177612305</real>
 					</array>
 					<array>
-						<real>17.8359375</real>
-						<real>17.3515625</real>
+						<real>180.92343139648438</real>
+						<real>7.1126103401184082</real>
+					</array>
+				</array>
+				<array>
+					<array>
+						<real>134.78440856933594</real>
+						<real>11.859025001525879</real>
 					</array>
 					<array>
-						<real>123.96484375</real>
-						<real>17.56640625</real>
+						<real>165.28758239746094</real>
+						<real>17.118635177612305</real>
 					</array>
 					<array>
-						<real>129.79296875</real>
-						<real>59.1875</real>
+						<real>178.84767150878906</real>
+						<real>24.226766586303711</real>
 					</array>
 					<array>
-						<real>112.69921875</real>
-						<real>103.37890625</real>
+						<real>218.78752136230469</real>
+						<real>51.377586364746094</real>
 					</array>
 					<array>
-						<real>103.34765625</real>
-						<real>105.421875</real>
+						<real>201.36186218261719</real>
+						<real>53.139301300048828</real>
 					</array>
 					<array>
-						<real>75.46484375</real>
-						<real>107.25</real>
+						<real>129.18011474609375</real>
+						<real>46.855854034423828</real>
+					</array>
+				</array>
+				<array>
+					<array>
+						<real>42.016128540039062</real>
+						<real>48.589481353759766</real>
+					</array>
+					<array>
+						<real>44.347206115722656</real>
+						<real>55.838039398193359</real>
+					</array>
+					<array>
+						<real>31.84765625</real>
+						<real>47.0390625</real>
+					</array>
+				</array>
+				<array>
+					<array>
+						<real>31.84765625</real>
+						<real>47.0390625</real>
+					</array>
+					<array>
+						<real>4.8975825309753418</real>
+						<real>40.970706939697266</real>
+					</array>
+					<array>
+						<real>47.196586608886719</real>
+						<real>23.744211196899414</real>
+					</array>
+					<array>
+						<real>62.291156768798828</real>
+						<real>20.473550796508789</real>
+					</array>
+					<array>
+						<real>95.753501892089844</real>
+						<real>14.304998397827148</real>
+					</array>
+					<array>
+						<real>134.78440856933594</real>
+						<real>11.859025001525879</real>
+					</array>
+					<array>
+						<real>129.18011474609375</real>
+						<real>46.855854034423828</real>
+					</array>
+					<array>
+						<real>42.016128540039062</real>
+						<real>48.589481353759766</real>
 					</array>
 				</array>
 			</array>
@@ -351,7 +485,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>bunnysitold.png</string>
+					<string>fox.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -362,7 +496,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string></string>
+					<string>fox.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -387,10 +521,6 @@
 				<array/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
-		<key>seqExpanded</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -438,19 +568,19 @@
 				<integer>12</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>0</integer>
 			<key>length</key>
-			<real>10</real>
+			<real>1</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.1666666716337204</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>128</real>
+			<real>306.84552001953125</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

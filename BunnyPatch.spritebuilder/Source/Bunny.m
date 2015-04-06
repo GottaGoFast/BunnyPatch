@@ -9,5 +9,14 @@
 #import "Bunny.h"
 
 @implementation Bunny
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        CCLOG(@"Penguin created");
+    }
+    
+    return self;
+}
 
 @end

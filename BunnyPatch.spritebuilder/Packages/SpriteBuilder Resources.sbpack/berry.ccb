@@ -49,11 +49,110 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>tree</string>
+				<string>berry</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
+				<key>physicsBody</key>
+				<dict>
+					<key>affectedByGravity</key>
+					<true/>
+					<key>allowsRotation</key>
+					<true/>
+					<key>bodyShape</key>
+					<integer>0</integer>
+					<key>collisionCategories</key>
+					<array/>
+					<key>collisionMask</key>
+					<array/>
+					<key>collisionType</key>
+					<string>berry</string>
+					<key>cornerRadius</key>
+					<real>0.0</real>
+					<key>density</key>
+					<real>0.0</real>
+					<key>dynamic</key>
+					<false/>
+					<key>elasticity</key>
+					<real>0.30000001192092896</real>
+					<key>friction</key>
+					<real>0.30000001192092896</real>
+					<key>points</key>
+					<array>
+						<array>
+							<real>17.301918029785156</real>
+							<real>9.4836406707763672</real>
+						</array>
+						<array>
+							<real>11.277204513549805</real>
+							<real>29.234416961669922</real>
+						</array>
+						<array>
+							<real>6.4735603332519531</real>
+							<real>43.31329345703125</real>
+						</array>
+						<array>
+							<real>48.67535400390625</real>
+							<real>53.854412078857422</real>
+						</array>
+						<array>
+							<real>60.344638824462891</real>
+							<real>38.977638244628906</real>
+						</array>
+						<array>
+							<real>53.218116760253906</real>
+							<real>10.338885307312012</real>
+						</array>
+						<array>
+							<real>36.867839813232422</real>
+							<real>-0.20188254117965698</real>
+						</array>
+					</array>
+					<key>polygons</key>
+					<array>
+						<array>
+							<array>
+								<real>11.277204513549805</real>
+								<real>29.234416961669922</real>
+							</array>
+							<array>
+								<real>17.301918029785156</real>
+								<real>9.4836406707763672</real>
+							</array>
+							<array>
+								<real>36.867839813232422</real>
+								<real>-0.20188254117965698</real>
+							</array>
+						</array>
+						<array>
+							<array>
+								<real>36.867839813232422</real>
+								<real>-0.20188254117965698</real>
+							</array>
+							<array>
+								<real>53.218116760253906</real>
+								<real>10.338885307312012</real>
+							</array>
+							<array>
+								<real>60.344638824462891</real>
+								<real>38.977638244628906</real>
+							</array>
+							<array>
+								<real>48.67535400390625</real>
+								<real>53.854412078857422</real>
+							</array>
+							<array>
+								<real>6.4735603332519531</real>
+								<real>43.31329345703125</real>
+							</array>
+							<array>
+								<real>11.277204513549805</real>
+								<real>29.234416961669922</real>
+							</array>
+						</array>
+					</array>
+				</dict>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -72,7 +171,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>31.000003814697266</real>
+							<real>14.455060958862305</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -96,8 +195,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.83716052770614624</real>
-							<real>1.6020729541778564</real>
+							<real>0.44678589701652527</real>
+							<real>0.53537261486053467</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -110,7 +209,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>tree.png</string>
+							<string>berry.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -146,8 +245,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

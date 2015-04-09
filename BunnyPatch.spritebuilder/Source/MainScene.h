@@ -1,18 +1,24 @@
-@interface MainScene : CCNode{
+
+
+#import <CCNode.h> 
+
+
+@interface MainScene : CCNode <CCPhysicsCollisionDelegate>{
      CGFloat scrollSpeed;
      CGFloat firstTreePos;
      CGFloat distBtwnTrees;
+    CGFloat bunnyHeight;
     CCSprite * bunny;
     CCPhysicsNode * physicsNode;
     CCNode* ground;
     CCNode * ground1;
     CCNode * background;
     CCNode * background1;
-    CCNode * berry;
-    CCNode * berry1;
+
     NSArray * backgrounds;
     NSArray * grounds;
     NSMutableArray * trees;
+    NSMutableArray * berries;
 }
 
 -(void) update:(CCTime)delta;

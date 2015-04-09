@@ -1,4 +1,6 @@
 #import "MainScene.h"
+#import "Berry.h"
+#import <CCNode.h> 
 
 @implementation MainScene
 
@@ -62,6 +64,42 @@
         [self spawnNewTrees];
     }
     
+    
+    //take out berries that are no longer on screen
+    NSMutableArray * offScreenBerries = nil;
+    for (CCNode* berry in berries){
+        CGPoint berryWorldPosition = [physicsNode convertToWorldSpace:berry.position];
+        CGPoint berryScreenPosition = [self convertToNodeSpace:berryWorldPosition];
+        
+        if(berryScreenPosition.x+50 < -(berry.contentSize.width)){
+            if(!offScreenBerries){
+                offScreenBerries = [NSMutableArray array];
+                
+            }
+            [offScreenBerries addObject:berry];
+        }
+    }
+    
+    for(CCNode* berryToRemove in  offScreenBerries){
+        [berryToRemove removeFromParent];
+        [berries removeObject:berryToRemove];
+    }
+    
+    //don't allow double jumps on bunny
+    CGFloat temp = bunny.position.y - bunny.contentSize.height/2;
+    CGFloat temp2 = ground.position.y + ground.contentSize.height/2;
+    
+    if (temp <= temp2) {
+        
+        self.userInteractionEnabled = YES;
+
+    }
+    else{
+        self.userInteractionEnabled = NO;
+    }
+    if (self->bunny.scale > .5) {
+        self->bunny.scale = self->bunny.scale*.9999;
+    }
 }
 
 -(void)didLoadFromCCB{
@@ -74,10 +112,41 @@
     
     [bunny setZOrder: 500];
     
+    self.userInteractionEnabled = YES;
+    
     [self spawnNewTrees];
     [self spawnNewTrees];
     
+    
+    
+    physicsNode.collisionDelegate = self;
+    
+    bunny.physicsBody.collisionType = @"bunny";
+
+    
+    
+    
 }
+
+-(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny berry:(CCNode *)berry{
+    
+
+    [berry removeFromParent];
+    [berries removeObject:berry];
+    NSLog(@"%f", self->bunny.scale);
+    if(self->bunny.scale < 1)
+        self->bunny.scale = self->bunny.scale*1.05;
+    return FALSE;
+    
+}
+
+-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
+    
+    [bunny.physicsBody applyImpulse:ccp(10, 6000.f)];
+    self.userInteractionEnabled = NO;
+}
+
+
 -(void)spawnNewTrees{
     
     CCNode* prevTree = [trees lastObject];
@@ -93,12 +162,20 @@
     
     CCNode * newTree = [CCBReader load:@"Tree"];
     
-    newTree.position = ccp(prevTreeXPos + distBtwnTrees, 90);
+    newTree.position = ccp(prevTreeXPos + distBtwnTrees, 100);
     
     [physicsNode addChild:newTree z: 8];
     [trees addObject: newTree];
     
     
+    Berry* berry = (Berry*)[CCBReader load:@"berry"];
+    
+    //[berry spawnNewBerries:newTree.position];
+    berry.position = ccp(newTree.position.x-10, newTree.position.y-10);
+    berry.physicsBody.collisionType = @"berry";
+    berry.physicsBody.sensor = YES;
+    [physicsNode addChild:berry z: 9];
+    [berries addObject: berry];
     
 }
 

@@ -7,10 +7,20 @@
 
 
 -(void)update:(CCTime)delta{
+    int location = 300;
     
-    bunny.position = ccp(bunny.position.x + scrollSpeed*(CGFloat)delta, bunny.position.y);
+    
+    CGPoint bunnyWorldPosition = [physicsNode convertToWorldSpace:bunny.position];
+    CGPoint bunnyScreenPosition = [self convertToNodeSpace:bunnyWorldPosition];
+    if (bunnyScreenPosition.x <= location) { //NOTE: change relative to ground later
+        bunny.position = ccp(bunny.position.x + scrollSpeed*(CGFloat)delta, bunny.position.y);
+    }
+ 
     
     physicsNode.position = ccp(physicsNode.position.x - scrollSpeed * delta, physicsNode.position.y);
+    
+    fox.position = ccp(fox.position.x - scrollSpeed*(CGFloat) delta, fox.position.y);
+    
     
     //loop ground
     for ( CCNode* n in grounds){
@@ -23,8 +33,8 @@
  
         
         
-        if (groundScreenPosition.x <= -1*n.contentSize.width) {
-            n.position = ccp(n.position.x+2*n.contentSize.width, n.position.y);
+        if (groundScreenPosition.x <= -1*location) {
+            n.position = ccp(n.position.x+2*location, n.position.y);
 
         }
         
@@ -33,8 +43,8 @@
         CGPoint  groundWorldPostion = [physicsNode convertToWorldSpace:n.position];
         
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPostion];
-        if (groundScreenPosition.x <= -1*n.contentSize.width) {
-            n.position = ccp(n.position.x+2*n.contentSize.width, n.position.y);
+        if (groundScreenPosition.x <= -1*location) {
+            n.position = ccp(n.position.x+2*location, n.position.y);
             
         }
         
@@ -105,12 +115,19 @@
 -(void)didLoadFromCCB{
     firstTreePos = 280.f;
     distBtwnTrees = 320.f;
+    foxPos = 960.f;
     scrollSpeed = 80;
     trees = [NSMutableArray array];
     grounds = [NSArray arrayWithObjects:ground, ground1, nil];
     backgrounds = [NSArray arrayWithObjects:background, background1, nil];
     
-    [bunny setZOrder: 500];
+    
+    
+    bunny = (CCSprite*) [CCBReader load:@"Bunny"];
+    bunny.scale = 0.5;
+            
+    bunny.position = ccp(100, 100);
+    [physicsNode addChild:bunny z:500];
     
     self.userInteractionEnabled = YES;
     
@@ -123,7 +140,10 @@
     
     bunny.physicsBody.collisionType = @"bunny";
 
-    
+    self->fox =  (CCSprite*)[CCBReader load:@"Fox"];
+    [physicsNode addChild: fox z:10];
+    [self spawnNewFox];
+    fox.physicsBody.collisionType = @"fox";
     
     
 }
@@ -134,18 +154,33 @@
     [berry removeFromParent];
     [berries removeObject:berry];
     NSLog(@"%f", self->bunny.scale);
-    if(self->bunny.scale < 1)
+    if(self->bunny.scale < 0.9)
         self->bunny.scale = self->bunny.scale*1.05;
     return FALSE;
     
 }
 
+-(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny fox:(CCNode *)fox{
+    
+    NSLog(@"fox touched bunny");
+    return FALSE;
+}
+
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
     
-    [bunny.physicsBody applyImpulse:ccp(10, 6000.f)];
+    [bunny.physicsBody applyImpulse:ccp(1000, 6000.f)];
+    //bunny =[CCBReader load:@"Fox"];
     self.userInteractionEnabled = NO;
 }
 
+
+-(void)spawnNewFox{
+    
+    fox.position = ccp(foxPos, 40);
+    
+    
+                   
+}
 
 -(void)spawnNewTrees{
     

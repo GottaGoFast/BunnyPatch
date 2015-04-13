@@ -125,9 +125,16 @@
     grounds = [NSArray arrayWithObjects:ground, ground1, nil];
     backgrounds = [NSArray arrayWithObjects:background, background1, nil];
     
+    [startButton setVisible:true];
+    
+    
+}
+
+-(void)play{
+    [startButton setVisible:false];
     bunny = (CCSprite*) [CCBReader load:@"Bunny"];
     bunny.scale = 0.5;
-            
+    
     bunny.position = ccp(100, 100);
     [physicsNode addChild:bunny z:500];
     
@@ -150,7 +157,13 @@
     [self spawnNewFox];
     fox.physicsBody.collisionType = @"fox";
     
-    
+
+}
+
+-(void)restart{
+    CCScene *scene = [CCBReader loadAsScene:@"MainScene"];
+    NSLog(@"now we are restarting");
+    [[CCDirector sharedDirector] replaceScene:scene];
 }
 
 -(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny ground:(CCNode *)ground{
@@ -174,6 +187,8 @@
 
 -(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny fox:(CCNode *)fox{
     
+    [self->bunny removeFromParent];
+    [restartButton setVisible:true];
     NSLog(@"fox touched bunny");
     return FALSE;
 }

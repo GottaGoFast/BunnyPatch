@@ -17,7 +17,8 @@
     CCSprite * background;
     CCSprite * background1;
     CCSprite * fox;
-
+    CCButton * startButton;
+    CCButton * restartButton;
     
     NSArray * backgrounds;
     NSArray * grounds;
@@ -29,5 +30,6 @@
 -(void) update:(CCTime)delta;
 -(void)didLoadFromCCB;
 - (void)spawnNewTrees;
-
+-(void)play;
+-(void)restart;
 @end

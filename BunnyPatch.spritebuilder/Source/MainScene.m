@@ -7,15 +7,20 @@
 
 
 -(void)update:(CCTime)delta{
-    int location = 300;
-    
-    
     CGPoint bunnyWorldPosition = [physicsNode convertToWorldSpace:bunny.position];
     CGPoint bunnyScreenPosition = [self convertToNodeSpace:bunnyWorldPosition];
-    if (bunnyScreenPosition.x <= location) { //NOTE: change relative to ground later
+
+    if (bunnyScreenPosition.x > 300){
+        bunny.position =ccp(bunny.position.x - scrollSpeed*(CGFloat)delta, bunny.position.y);
+    }
+    else { //NOTE: change relative to ground later
+        if (bunnyScreenPosition.x < 300 && bunnyScreenPosition.x > 200){
+            bunny.position =ccp(bunny.position.x - scrollSpeed*(CGFloat)delta, bunny.position.y);
+        }
         bunny.position = ccp(bunny.position.x + scrollSpeed*(CGFloat)delta, bunny.position.y);
     }
- 
+
+
     
     physicsNode.position = ccp(physicsNode.position.x - scrollSpeed * delta, physicsNode.position.y);
     
@@ -23,28 +28,31 @@
     
     
     //loop ground
-    for ( CCNode* n in grounds){
-        CGPoint  groundWorldPostion = [physicsNode convertToWorldSpace:n.position];
+    for ( CCSprite* n in grounds){
+        CGPoint  groundWorldPosition = [physicsNode convertToWorldSpace:n.position];
         //NSLog(@"%f", groundWorldPostion.y);
 
         
-        CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPostion];
+        CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
         
  
         
         
-        if (groundScreenPosition.x <= -1*location) {
-            n.position = ccp(n.position.x+2*location, n.position.y);
+        if (groundScreenPosition.x <= -1*n.contentSize.width) {
+            n.position = ccp(n.position.x+n.contentSize.width*2, n.position.y);
 
         }
         
     }
-    for ( CCNode* n in backgrounds){
+    
+
+    for ( CCSprite* n in backgrounds){
         CGPoint  groundWorldPostion = [physicsNode convertToWorldSpace:n.position];
         
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPostion];
-        if (groundScreenPosition.x <= -1*location) {
-            n.position = ccp(n.position.x+2*location, n.position.y);
+        
+        if (groundScreenPosition.x <= -0.9*n.contentSize.width*n.scaleX) {
+            n.position = ccp(n.position.x+n.contentSize.width*n.scaleX*2, n.position.y);
             
         }
         
@@ -121,8 +129,6 @@
     grounds = [NSArray arrayWithObjects:ground, ground1, nil];
     backgrounds = [NSArray arrayWithObjects:background, background1, nil];
     
-    
-    
     bunny = (CCSprite*) [CCBReader load:@"Bunny"];
     bunny.scale = 0.5;
             
@@ -153,9 +159,10 @@
 
     [berry removeFromParent];
     [berries removeObject:berry];
-    NSLog(@"%f", self->bunny.scale);
+    NSLog(@"%f", self->bunny.contentSize.height);
     if(self->bunny.scale < 0.9)
         self->bunny.scale = self->bunny.scale*1.05;
+        [self->bunny setContentSizeInPoints: CGSizeMake(self->bunny.contentSize.width*1.05, self->bunny.contentSize.height*1.05)];
     return FALSE;
     
 }
@@ -171,6 +178,7 @@
     [bunny.physicsBody applyImpulse:ccp(1000, 6000.f)];
     //bunny =[CCBReader load:@"Fox"];
     self.userInteractionEnabled = NO;
+
 }
 
 

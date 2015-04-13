@@ -11,11 +11,12 @@
     CGFloat bunnyHeight;
     CCSprite * bunny;
     CCPhysicsNode * physicsNode;
-    CCNode* ground;
-    CCNode * ground1;
-    CCNode * background;
-    CCNode * background1;
+    CCSprite * ground;
+    CCSprite * ground1;
+    CCSprite * background;
+    CCSprite * background1;
     CCSprite * fox;
+
 
     NSArray * backgrounds;
     NSArray * grounds;

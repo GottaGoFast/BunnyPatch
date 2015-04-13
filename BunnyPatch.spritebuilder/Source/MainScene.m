@@ -10,21 +10,18 @@
     CGPoint bunnyWorldPosition = [physicsNode convertToWorldSpace:bunny.position];
     CGPoint bunnyScreenPosition = [self convertToNodeSpace:bunnyWorldPosition];
 
-    if (bunnyScreenPosition.x > 300){
-        bunny.position =ccp(bunny.position.x - scrollSpeed*(CGFloat)delta, bunny.position.y);
-    }
-    else { //NOTE: change relative to ground later
-        if (bunnyScreenPosition.x < 300 && bunnyScreenPosition.x > 200){
-            bunny.position =ccp(bunny.position.x - scrollSpeed*(CGFloat)delta, bunny.position.y);
-        }
-        bunny.position = ccp(bunny.position.x + scrollSpeed*(CGFloat)delta, bunny.position.y);
-    }
-
-
     
     physicsNode.position = ccp(physicsNode.position.x - scrollSpeed * delta, physicsNode.position.y);
     
     fox.position = ccp(fox.position.x - scrollSpeed*(CGFloat) delta, fox.position.y);
+    
+    bunny.position = ccp(bunny.position.x + bunnySpeed*delta, bunny.position.y );
+    if (bunnyScreenPosition.x > 400) {
+        bunnySpeed = -scrollSpeed;
+    }
+    else if (bunnyScreenPosition.x < 100){
+        bunnySpeed = scrollSpeed;
+    }
     
     
     //loop ground
@@ -55,7 +52,6 @@
             n.position = ccp(n.position.x+n.contentSize.width*n.scaleX*2, n.position.y);
             
         }
-        
     }
  
     
@@ -140,18 +136,27 @@
     [self spawnNewTrees];
     [self spawnNewTrees];
     
-    
+    bunnySpeed = scrollSpeed;
     
     physicsNode.collisionDelegate = self;
     
     bunny.physicsBody.collisionType = @"bunny";
-
+    
+    for(CCSprite * gr in  grounds){
+        gr.physicsBody.collisionType = @"ground";
+    }
     self->fox =  (CCSprite*)[CCBReader load:@"Fox"];
     [physicsNode addChild: fox z:10];
     [self spawnNewFox];
     fox.physicsBody.collisionType = @"fox";
     
     
+}
+
+-(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny ground:(CCNode *)ground{
+    
+    self.userInteractionEnabled = YES;
+    return YES;
 }
 
 -(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny berry:(CCNode *)berry{

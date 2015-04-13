@@ -9,6 +9,7 @@
     CGFloat foxPos;
      CGFloat distBtwnTrees;
     CGFloat bunnyHeight;
+    CGFloat bunnySpeed;
     CCSprite * bunny;
     CCPhysicsNode * physicsNode;
     CCSprite * ground;
@@ -17,7 +18,7 @@
     CCSprite * background1;
     CCSprite * fox;
 
-
+    
     NSArray * backgrounds;
     NSArray * grounds;
     NSMutableArray * trees;

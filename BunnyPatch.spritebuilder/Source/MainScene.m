@@ -180,9 +180,14 @@
 
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
     
-    [bunny.physicsBody applyImpulse:ccp(1000, 6000.f)];
-    //bunny =[CCBReader load:@"Fox"];
+    
     self.userInteractionEnabled = NO;
+   
+    CCBAnimationManager* animationManager = bunny.userObject;
+    [animationManager runAnimationsForSequenceNamed:@"bunnyHop"];
+    
+    [bunny.physicsBody applyImpulse:ccp(1000, 6000.f)];
+    
 
 }
 

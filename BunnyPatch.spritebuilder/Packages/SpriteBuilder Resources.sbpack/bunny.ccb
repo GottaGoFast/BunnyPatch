@@ -16,7 +16,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>docDimensionsType</key>
 	<integer>1</integer>
 	<key>fileType</key>
@@ -53,6 +53,199 @@
 							<string>spriteFrame</string>
 							<key>time</key>
 							<real>0.0</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>bunnysitold.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+					</array>
+					<key>name</key>
+					<string>spriteFrame</string>
+					<key>type</key>
+					<integer>7</integer>
+				</dict>
+			</dict>
+			<key>2</key>
+			<dict>
+				<key>spriteFrame</key>
+				<dict>
+					<key>keyframes</key>
+					<array>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.0</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>bunnysitold.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.066666670143604279</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>ccbResources/hopcycle2.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.1666666716337204</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>ccbResources/hopcycle3.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.3333333432674408</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>ccbResources/hopcycle4.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.60000002384185791</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>ccbResources/hopcycle5.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.83333331346511841</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>ccbResources/hopcycle6.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>1</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>ccbResources/hopcycle7.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>1.1666666269302368</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>ccbResources/hopcycle8.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>1.2999999523162842</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>ccbResources/hopcycle9.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>1.4333332777023315</real>
 							<key>type</key>
 							<integer>7</integer>
 							<key>value</key>
@@ -387,8 +580,6 @@
 				<array/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 		<key>seqExpanded</key>
 		<true/>
 	</dict>
@@ -444,7 +635,7 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.84843754768371582</real>
 			<key>position</key>
 			<real>0.0</real>
 			<key>resolution</key>
@@ -453,6 +644,42 @@
 			<real>128</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
+			<key>soundChannel</key>
+			<dict>
+				<key>isExpanded</key>
+				<false/>
+				<key>keyframes</key>
+				<array/>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>autoPlay</key>
+			<false/>
+			<key>callbackChannel</key>
+			<dict>
+				<key>keyframes</key>
+				<array/>
+				<key>type</key>
+				<integer>12</integer>
+			</dict>
+			<key>chainedSequenceId</key>
+			<integer>-1</integer>
+			<key>length</key>
+			<real>1.5</real>
+			<key>name</key>
+			<string>bunnyHop</string>
+			<key>offset</key>
+			<real>0.0</real>
+			<key>position</key>
+			<real>1.5</real>
+			<key>resolution</key>
+			<real>30</real>
+			<key>scale</key>
+			<real>128</real>
+			<key>sequenceId</key>
+			<integer>2</integer>
 			<key>soundChannel</key>
 			<dict>
 				<key>isExpanded</key>

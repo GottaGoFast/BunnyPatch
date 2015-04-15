@@ -193,25 +193,28 @@
     return FALSE;
 }
 
--(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
-    
+-(void) touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
     
     self.userInteractionEnabled = NO;
    
-    CCBAnimationManager* animationManager = bunny.userObject;
+    CCAnimationManager* animationManager = bunny.userObject;
+    [animationManager runAnimationsForSequenceNamed:@"bunnyPrep"];
+    
+    
+}
+
+-(void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
+    CCAnimationManager* animationManager = bunny.userObject;
     [animationManager runAnimationsForSequenceNamed:@"bunnyHop"];
     
     [bunny.physicsBody applyImpulse:ccp(1000, 6000.f)];
-    
-
 }
-
 
 -(void)spawnNewFox{
     
     fox.position = ccp(foxPos, 40);
     
-    
+
                    
 }
 

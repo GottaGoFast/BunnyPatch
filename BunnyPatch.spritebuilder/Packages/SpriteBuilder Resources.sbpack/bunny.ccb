@@ -178,24 +178,6 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>ccbResources/hopcycle9.png</string>
-								<string>Use regular file</string>
-							</array>
-						</dict>
-						<dict>
-							<key>easing</key>
-							<dict>
-								<key>type</key>
-								<integer>0</integer>
-							</dict>
-							<key>name</key>
-							<string>spriteFrame</string>
-							<key>time</key>
-							<real>1.4666666984558105</real>
-							<key>type</key>
-							<integer>7</integer>
-							<key>value</key>
-							<array>
 								<string>bunnysitold.png</string>
 								<string>Use regular file</string>
 							</array>
@@ -662,13 +644,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1.5</real>
+			<real>1.2999999523162842</real>
 			<key>name</key>
 			<string>bunnyHop</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.5</real>
+			<real>1.2999999523162842</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

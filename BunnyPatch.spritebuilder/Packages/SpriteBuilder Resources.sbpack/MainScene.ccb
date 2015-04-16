@@ -80,8 +80,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>1496</real>
-									<real>165.40199279785156</real>
+									<real>1000</real>
+									<real>166.25</real>
 									<integer>1</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -94,7 +94,7 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
+									<real>0.0</real>
 									<real>0.5</real>
 								</array>
 							</dict>
@@ -188,8 +188,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>496</real>
-									<real>165.40199279785156</real>
+									<real>0.0</real>
+									<real>166.25</real>
 									<integer>1</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -202,7 +202,7 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
+									<real>0.0</real>
 									<real>0.5</real>
 								</array>
 							</dict>
@@ -361,7 +361,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>1496</real>
+									<real>996</real>
 									<real>0.0</real>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -375,7 +375,7 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
+									<real>0.0</real>
 									<real>0.5</real>
 								</array>
 							</dict>
@@ -534,7 +534,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>496</real>
+									<real>-4</real>
 									<real>0.0</real>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -548,7 +548,7 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
+									<real>0.0</real>
 									<real>0.5</real>
 								</array>
 							</dict>
@@ -1370,8 +1370,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

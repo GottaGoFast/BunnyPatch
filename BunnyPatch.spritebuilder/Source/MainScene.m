@@ -16,11 +16,11 @@
     fox.position = ccp(fox.position.x - scrollSpeed*(CGFloat) delta, fox.position.y);
     
     bunny.position = ccp(bunny.position.x + bunnySpeed*delta, bunny.position.y );
-    if (bunnyScreenPosition.x > 400) {
-        bunnySpeed = -scrollSpeed;
+    if (bunnyScreenPosition.x > 400 && bunnyScreenPosition.y < 100) {
+        scrollSpeed = 1.1*scrollSpeed;
     }
     else if (bunnyScreenPosition.x < 100){
-        bunnySpeed = scrollSpeed;
+        scrollSpeed = scrollConst;
     }
     
     
@@ -36,7 +36,11 @@
         
         
         if (groundScreenPosition.x <= -1*n.contentSize.width) {
+            
             n.position = ccp(n.position.x+n.contentSize.width*2, n.position.y);
+            
+            //cliffRight.position = ccp(n.position.x+n.contentSize.width*2, n.position.y);
+            //cliffLeft.position = ccp(n.position.x+n.contentSize.width*2+cliffRight.contentSize.width, n.position.y);
 
         }
         
@@ -48,7 +52,7 @@
         
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPostion];
         
-        if (groundScreenPosition.x <= -0.9*n.contentSize.width*n.scaleX) {
+        if (groundScreenPosition.x <= -1*n.contentSize.width*n.scaleX) {
             n.position = ccp(n.position.x+n.contentSize.width*n.scaleX*2, n.position.y);
             
         }
@@ -111,8 +115,8 @@
     else{
         self.userInteractionEnabled = NO;
     }
-    if (self->bunny.scale > .5) {
-        self->bunny.scale = self->bunny.scale*.9999;
+    if (self->bunny.scale > .5 ) {
+        self->bunny.scale = self->bunny.scale*.9995;
     }
 }
 
@@ -121,6 +125,7 @@
     distBtwnTrees = 320.f;
     foxPos = 960.f;
     scrollSpeed = 80;
+    scrollConst = 80;
     trees = [NSMutableArray array];
     grounds = [NSArray arrayWithObjects:ground, ground1, nil];
     backgrounds = [NSArray arrayWithObjects:background, background1, nil];
@@ -133,10 +138,14 @@
 -(void)play{
     [startButton setVisible:false];
     bunny = (CCSprite*) [CCBReader load:@"Bunny"];
+    cliffLeft = (CCSprite*)[CCBReader load:@"cliffLeft"];
+    cliffRight = (CCSprite*)[CCBReader load:@"cliffRight"];
     bunny.scale = 0.5;
     
+    //bunny.position = [self convertToNodeSpaceAR: ccp(100, 100) ];
     bunny.position = ccp(100, 100);
     [physicsNode addChild:bunny z:500];
+    [physicsNode addChild:cliffRight];
     
     self.userInteractionEnabled = YES;
     
@@ -187,8 +196,8 @@
 
 -(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny fox:(CCNode *)fox{
     
-    [self->bunny removeFromParent];
-    [restartButton setVisible:true];
+    //[self->bunny removeFromParent];
+    //[restartButton setVisible:true];
     NSLog(@"fox touched bunny");
     return FALSE;
 }
@@ -207,7 +216,7 @@
     CCAnimationManager* animationManager = bunny.userObject;
     [animationManager runAnimationsForSequenceNamed:@"bunnyHop"];
     
-    [bunny.physicsBody applyImpulse:ccp(1000, 6000.f)];
+    [bunny.physicsBody applyImpulse:ccp(1500*self->bunny.scale, 9000.f*self->bunny.scale)];
 }
 
 -(void)spawnNewFox{

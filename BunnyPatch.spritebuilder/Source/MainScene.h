@@ -5,6 +5,7 @@
 
 @interface MainScene : CCNode <CCPhysicsCollisionDelegate>{
      CGFloat scrollSpeed;
+    CGFloat scrollConst;
      CGFloat firstTreePos;
     CGFloat foxPos;
      CGFloat distBtwnTrees;
@@ -19,6 +20,9 @@
     CCSprite * fox;
     CCButton * startButton;
     CCButton * restartButton;
+
+    CCSprite * cliffLeft;
+    CCSprite * cliffRight;
     
     NSArray * backgrounds;
     NSArray * grounds;

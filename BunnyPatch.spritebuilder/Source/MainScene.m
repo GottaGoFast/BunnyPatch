@@ -12,8 +12,15 @@
 
     
     physicsNode.position = ccp(physicsNode.position.x - scrollSpeed * delta, physicsNode.position.y);
-    
-    fox.position = ccp(fox.position.x - scrollSpeed*(CGFloat) delta, fox.position.y);
+    CGPoint foxWorldPostion = [physicsNode convertToWorldSpace:fox.position];
+    CGPoint foxScreenPosition = [self convertToNodeSpace:foxWorldPostion];
+     if(foxScreenPosition.x+50 < -(fox.contentSize.width)){
+         fox.position = ccp(fox.position.x + 900.f,fox.position.y);
+     }
+     else{
+         
+         fox.position = ccp(fox.position.x - scrollSpeed*(CGFloat) delta, fox.position.y);
+     }
     
     bunny.position = ccp(bunny.position.x + bunnySpeed*delta, bunny.position.y );
     if (bunnyScreenPosition.x > 400) {
@@ -37,7 +44,7 @@
         
         if (groundScreenPosition.x <= -1*n.contentSize.width) {
             n.position = ccp(n.position.x+n.contentSize.width*2, n.position.y);
-
+            
         }
         
     }
@@ -50,6 +57,7 @@
         
         if (groundScreenPosition.x <= -0.9*n.contentSize.width*n.scaleX) {
             n.position = ccp(n.position.x+n.contentSize.width*n.scaleX*2, n.position.y);
+            
             
         }
     }
@@ -118,7 +126,6 @@
 
 -(void)didLoadFromCCB{
     firstTreePos = 280.f;
-    distBtwnTrees = 320.f;
     foxPos = 960.f;
     scrollSpeed = 80;
     trees = [NSMutableArray array];
@@ -224,7 +231,7 @@
     
     CGFloat prevTreeXPos = prevTree.position.x;
     
-    //distBtwnTrees = arc4random_uniform((u_int32_t)200)+ distBtwnTrees;
+    distBtwnTrees = arc4random_uniform((u_int32_t)200)+ 320.f;
     
     if(!prevTree){
         prevTreeXPos = firstTreePos;

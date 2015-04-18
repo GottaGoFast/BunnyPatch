@@ -345,6 +345,7 @@
     [self->fox removeFromParent];
     [self->bunny removeFromParent];
     self->gameStarted = NO;
+    self.userInteractionEnabled = NO;
 }
 
 @end

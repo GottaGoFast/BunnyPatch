@@ -56,24 +56,27 @@
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
         
         int cliff_rand = 3; //arc4random_uniform((u_int32_t)4);
+        int cliff_size = arc4random_uniform((u_int32_t)10) + 15;
         
         if (groundScreenPosition.x <= -1*n.contentSize.width) {
+            NSLog(@"%f", n.position.x);
+
             n.position = ccp(n.position.x+n.contentSize.width*2, n.position.y);
             
-            if (cliff_rand == 3){
+            CGPoint  rCliffWorldPosition = [physicsNode convertToWorldSpace:cliffRight.position];
+            
+            CGPoint rCliffScreenPosition = [self convertToNodeSpace:rCliffWorldPosition];
+           
+            if (cliff_rand == 3 && rCliffScreenPosition.x <= -0.8*cliffRight.contentSize.width){
                 [n setVisible:NO];
                 n.physicsBody.sensor = YES;
-                [cliffLeft setVisible:YES];
-                [cliffRight setVisible:YES];
-                cliffLeft.position = ccp(n.position.x+n.contentSize.width*2, n.position.y);
-                cliffRight.position = ccp(n.position.x+n.contentSize.width*2 + 300, n.position.y);
+                cliffLeft.position = ccp(n.position.x- 800 - cliff_size, n.position.y);
+                cliffRight.position = ccp(n.position.x+ 300 + cliff_size, n.position.y);
             }
             
             else{
                 [n setVisible:YES];
                 n.physicsBody.sensor = NO;
-                [cliffLeft setVisible:NO];
-                [cliffRight setVisible:NO];
             }
             
             
@@ -141,17 +144,17 @@
     }
     
     //don't allow double jumps on bunny
-//    CGFloat temp = bunny.position.y - bunny.contentSize.height/2;
-//    CGFloat temp2 = ground.position.y + ground.contentSize.height/2;
-//    
-//    if (temp <= temp2) {
-//        
-//        self.userInteractionEnabled = YES;
-//
-//    }
-//    else{
-//        self.userInteractionEnabled = NO;
-//    }
+    CGFloat temp = bunny.position.y - bunny.contentSize.height/2;
+    CGFloat temp2 = ground.position.y + ground.contentSize.height/2;
+    
+    if (temp <= temp2) {
+        
+       self.userInteractionEnabled = YES;
+
+    }
+    else{
+        self.userInteractionEnabled = NO;
+    }
     if (self->bunny.scale > .5 ) {
         self->bunny.scale = self->bunny.scale*.9995;
     }
@@ -183,8 +186,7 @@
     cliffLeft.scaleY = 2;
     [physicsNode addChild:cliffRight];
     [physicsNode addChild:cliffLeft];
-    [cliffRight setVisible:NO];
-    [cliffLeft setVisible:NO];
+
     
     
     bunny = (CCSprite*) [CCBReader load:@"Bunny"];
@@ -207,7 +209,6 @@
    
     
     for(CCSprite * gr in  grounds){
-        gr.physicsBody.sensor = YES;
         gr.physicsBody.collisionType = @"ground";
 
         

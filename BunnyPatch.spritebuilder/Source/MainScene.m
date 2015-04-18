@@ -28,7 +28,7 @@
     CGPoint foxWorldPostion = [physicsNode convertToWorldSpace:fox.position];
     CGPoint foxScreenPosition = [self convertToNodeSpace:foxWorldPostion];
      if(foxScreenPosition.x+50 < -(fox.contentSize.width)){
-         fox.position = ccp(fox.position.x + 900.f,fox.position.y);
+         fox.position = ccp(fox.position.x + 1500.f + arc4random_uniform((u_int32_t)1500),fox.position.y);
      }
      else{
          
@@ -149,7 +149,9 @@
     
     if (temp <= temp2) {
         
-       self.userInteractionEnabled = YES;
+
+        self.userInteractionEnabled = YES;
+
 
     }
     else{

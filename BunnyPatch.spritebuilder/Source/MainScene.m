@@ -221,8 +221,6 @@
     [physicsNode addChild: fox z:10];
     [self spawnNewFox];
     fox.physicsBody.collisionType = @"fox";
-    
-
 }
 
 -(void)restart{
@@ -266,7 +264,7 @@
     CCAnimationManager* animationManager = bunny.userObject;
     [animationManager runAnimationsForSequenceNamed:@"bunnyHop"];
     
-    [bunny.physicsBody applyImpulse:ccp(1000, 6000)];
+    [bunny.physicsBody applyImpulse:ccp(1500, 4000)];
 }
 
 -(void)spawnNewFox{

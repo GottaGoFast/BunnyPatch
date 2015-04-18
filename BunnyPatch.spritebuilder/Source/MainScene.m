@@ -297,7 +297,7 @@
     CCNode * newTree = [CCBReader load:@"Tree"];
     
     newTree.position = ccp(prevTreeXPos + distBtwnTrees, 100);
-    newTree.scaleX = .8;
+    newTree.scaleX = 1;
     newTree.scaleY = 1.4;
     
     [physicsNode addChild:newTree z: 8];
@@ -306,16 +306,18 @@
     
     
     
-    int numOfBerries = 2; //arc4random_uniform((u_int32_t)5);
-    int lowerBoundX = -newTree.contentSize.width*newTree.scaleX+10;
-    int upperBoundX = newTree.contentSize.width*newTree.scaleX;
-    int rndValue = lowerBoundX + arc4random() % (upperBoundX - lowerBoundX);
+    int numOfBerries = 2; //arc4random_uniform((u_int32_t)4);
+    int lowerBoundX = -newTree.contentSize.width/2*newTree.scaleX+10;
+    int upperBoundX = newTree.contentSize.width/2*newTree.scaleX-10;
+    int lowerBoundY = -newTree.contentSize.height/2*newTree.scaleY+20;
+    int upperBoundY = newTree.contentSize.height/2*newTree.scaleY-10;
     
     for (int i = 0; i<numOfBerries; i++) {
         Berry* berry = (Berry*)[CCBReader load:@"berry"];
-        int rndValue = lowerBoundX + arc4random() % (upperBoundX - lowerBoundX);
-        berry.scale = .5;
-        berry.position = ccp(newTree.position.x+rndValue, newTree.position.y+rndValue);
+        int rndValueX = lowerBoundX + arc4random() % (upperBoundX - lowerBoundX);
+        int rndValueY = lowerBoundY + arc4random() % (upperBoundY - lowerBoundY);
+        berry.scale = .4;
+        berry.position = ccp(newTree.position.x+ rndValueX, newTree.position.y +rndValueY);
         
         berry.physicsBody.collisionType = @"berry";
         berry.physicsBody.sensor = YES;

@@ -270,7 +270,7 @@
     CCAnimationManager* animationManager = bunny.userObject;
     [animationManager runAnimationsForSequenceNamed:@"bunnyHop"];
     
-    [bunny.physicsBody applyImpulse:ccp(1200, 4000)];
+    [bunny.physicsBody applyImpulse:ccp(800, 2800)];
 }
 
 -(void)spawnNewFox{
@@ -297,6 +297,8 @@
     CCNode * newTree = [CCBReader load:@"Tree"];
     
     newTree.position = ccp(prevTreeXPos + distBtwnTrees, 100);
+    newTree.scaleX = .8;
+    newTree.scaleY = 1.4;
     
     [physicsNode addChild:newTree z: 8];
     [trees addObject: newTree];
@@ -305,14 +307,16 @@
     
     
     int numOfBerries = 2; //arc4random_uniform((u_int32_t)5);
-    int lowerBoundX = -50;
-    int upperBoundX = 50;
+    int lowerBoundX = -newTree.contentSize.width*newTree.scaleX+10;
+    int upperBoundX = newTree.contentSize.width*newTree.scaleX;
     int rndValue = lowerBoundX + arc4random() % (upperBoundX - lowerBoundX);
     
     for (int i = 0; i<numOfBerries; i++) {
         Berry* berry = (Berry*)[CCBReader load:@"berry"];
-        int distFromCenterY = arc4random_uniform((u_int32_t)4)*10;
-        berry.position = ccp(newTree.position.x+rndValue, newTree.position.y+distFromCenterY);
+        int rndValue = lowerBoundX + arc4random() % (upperBoundX - lowerBoundX);
+        berry.scale = .5;
+        berry.position = ccp(newTree.position.x+rndValue, newTree.position.y+rndValue);
+        
         berry.physicsBody.collisionType = @"berry";
         berry.physicsBody.sensor = YES;
         [physicsNode addChild:berry z: 9];

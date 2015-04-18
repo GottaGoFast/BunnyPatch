@@ -120,28 +120,11 @@
         [treeToRemove removeFromParent];
         [trees removeObject:treeToRemove];
         [self spawnNewTrees];
-    }
-    
-    
-    //take out berries that are no longer on screen
-    NSMutableArray * offScreenBerries = nil;
-    for (CCNode* berry in berries){
-        CGPoint berryWorldPosition = [physicsNode convertToWorldSpace:berry.position];
-        CGPoint berryScreenPosition = [self convertToNodeSpace:berryWorldPosition];
         
-        if(berryScreenPosition.x+50 < -(berry.contentSize.width)){
-            if(!offScreenBerries){
-                offScreenBerries = [NSMutableArray array];
-                
-            }
-            [offScreenBerries addObject:berry];
-        }
     }
     
-    for(CCNode* berryToRemove in  offScreenBerries){
-        [berryToRemove removeFromParent];
-        [berries removeObject:berryToRemove];
-    }
+    [self removeBerries];
+
     
     //don't allow double jumps on bunny
     CGFloat temp = bunny.position.y - bunny.contentSize.height/2;
@@ -163,7 +146,25 @@
 }
 
 -(void)removeBerries{
+    //take out berries that are no longer on screen
+    NSMutableArray * offScreenBerries = nil;
+    for (CCNode* berry in berries){
+        CGPoint berryWorldPosition = [physicsNode convertToWorldSpace:berry.position];
+        CGPoint berryScreenPosition = [self convertToNodeSpace:berryWorldPosition];
+        
+        if(berryScreenPosition.x+50 < -(berry.contentSize.width)){
+            if(!offScreenBerries){
+                offScreenBerries = [NSMutableArray array];
+                
+            }
+            [offScreenBerries addObject:berry];
+        }
+    }
     
+    for(CCNode* berryToRemove in  offScreenBerries){
+        [berryToRemove removeFromParent];
+        [berries removeObject:berryToRemove];
+    }
 }
 
 -(void)didLoadFromCCB{
@@ -177,8 +178,6 @@
     gameStarted = NO;
     
     [startButton setVisible:true];
-    
-    
 }
 
 -(void)play{
@@ -266,7 +265,7 @@
     CCAnimationManager* animationManager = bunny.userObject;
     [animationManager runAnimationsForSequenceNamed:@"bunnyHop"];
     
-    [bunny.physicsBody applyImpulse:ccp(1500, 4000)];
+    [bunny.physicsBody applyImpulse:ccp(1200, 4000)];
 }
 
 -(void)spawnNewFox{
@@ -298,14 +297,23 @@
     [trees addObject: newTree];
     
     
-    Berry* berry = (Berry*)[CCBReader load:@"berry"];
     
-    //[berry spawnNewBerries:newTree.position];
-    berry.position = ccp(newTree.position.x-10, newTree.position.y-10);
-    berry.physicsBody.collisionType = @"berry";
-    berry.physicsBody.sensor = YES;
-    [physicsNode addChild:berry z: 9];
-    [berries addObject: berry];
+    
+    int numOfBerries = 2; //arc4random_uniform((u_int32_t)5);
+    int lowerBoundX = -50;
+    int upperBoundX = 50;
+    int rndValue = lowerBoundX + arc4random() % (upperBoundX - lowerBoundX);
+    
+    for (int i = 0; i<numOfBerries; i++) {
+        Berry* berry = (Berry*)[CCBReader load:@"berry"];
+        int distFromCenterY = arc4random_uniform((u_int32_t)4)*10;
+        berry.position = ccp(newTree.position.x+rndValue, newTree.position.y+distFromCenterY);
+        berry.physicsBody.collisionType = @"berry";
+        berry.physicsBody.sensor = YES;
+        [physicsNode addChild:berry z: 9];
+        [berries addObject: berry];
+    }
+
     
 }
 -(void)setGameOver{

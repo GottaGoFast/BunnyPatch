@@ -62,7 +62,6 @@
         int cliff_size = arc4random_uniform((u_int32_t)10) + 15;
         
         if (groundScreenPosition.x <= -1*n.contentSize.width) {
-            NSLog(@"%f", n.position.x);
 
             n.position = ccp(n.position.x+n.contentSize.width*2, n.position.y);
             
@@ -229,7 +228,6 @@
 
 -(void)restart{
     CCScene *scene = [CCBReader loadAsScene:@"MainScene"];
-    NSLog(@"now we are restarting");
     [[CCDirector sharedDirector] replaceScene:scene];
 }
 
@@ -240,7 +238,6 @@
     [berry removeFromParent];
     [berries removeObject:berry];
     score = score + 1;
-    NSLog(@"%f", self->bunny.contentSize.height);
     [scoreLabel setString:[NSString stringWithFormat:@"Current Score: %d",score]];
     if(self->bunny.scale < 0.9)
         self->bunny.scale = self->bunny.scale*1.05;
@@ -307,15 +304,31 @@
     
     
     int numOfBerries = 2; //arc4random_uniform((u_int32_t)4);
-    int lowerBoundX = -newTree.contentSize.width/2*newTree.scaleX+10;
-    int upperBoundX = newTree.contentSize.width/2*newTree.scaleX-10;
-    int lowerBoundY = -newTree.contentSize.height/2*newTree.scaleY+20;
-    int upperBoundY = newTree.contentSize.height/2*newTree.scaleY-10;
+    int lowerBoundY = -newTree.contentSize.height/2*newTree.scaleY+40;
+    int upperBoundY = newTree.contentSize.height/2*newTree.scaleY;
+    
+
+    int lowerBoundX = -newTree.contentSize.width/2*newTree.scaleX+30;
+    int upperBoundX = newTree.contentSize.width/2*newTree.scaleX-30;
+    int rndValueX = 0;
     
     for (int i = 0; i<numOfBerries; i++) {
         Berry* berry = (Berry*)[CCBReader load:@"berry"];
-        int rndValueX = lowerBoundX + arc4random() % (upperBoundX - lowerBoundX);
+        
         int rndValueY = lowerBoundY + arc4random() % (upperBoundY - lowerBoundY);
+
+        if (rndValueY>30 && rndValueY<80){
+            lowerBoundX = -12;
+            upperBoundX = 12;
+            
+        }
+        if (rndValueY >=80) {
+            lowerBoundX = -1;
+            upperBoundX = 1;
+        }
+        
+        
+        rndValueX = lowerBoundX + arc4random() % (upperBoundX - lowerBoundX);
         berry.scale = .4;
         berry.position = ccp(newTree.position.x+ rndValueX, newTree.position.y +rndValueY);
         
@@ -325,7 +338,7 @@
         [berries addObject: berry];
     }
 
-    
+
 }
 -(void)setGameOver{
     [restartButton setVisible:YES];

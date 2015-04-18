@@ -226,11 +226,6 @@
     [[CCDirector sharedDirector] replaceScene:scene];
 }
 
--(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny ground:(CCNode *)ground{
-    
-    self.userInteractionEnabled = YES;
-    return YES;
-}
 
 -(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny berry:(CCNode *)berry{
     

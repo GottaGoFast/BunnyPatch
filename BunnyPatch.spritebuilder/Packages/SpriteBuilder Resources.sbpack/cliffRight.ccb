@@ -66,7 +66,7 @@
 			<key>density</key>
 			<real>1</real>
 			<key>dynamic</key>
-			<false/>
+			<true/>
 			<key>elasticity</key>
 			<real>0.30000001192092896</real>
 			<key>friction</key>
@@ -78,15 +78,15 @@
 					<real>0.0</real>
 				</array>
 				<array>
-					<real>3.0074875354766846</real>
-					<real>14.301156997680664</real>
+					<real>5.0676264762878418</real>
+					<real>14.433924674987793</real>
 				</array>
 				<array>
-					<real>318.7139892578125</real>
-					<real>13.621518135070801</real>
+					<real>943.25128173828125</real>
+					<real>15.82093334197998</real>
 				</array>
 				<array>
-					<real>320</real>
+					<real>939</real>
 					<real>0.0</real>
 				</array>
 			</array>
@@ -94,16 +94,16 @@
 			<array>
 				<array>
 					<array>
-						<real>320</real>
+						<real>939</real>
 						<real>0.0</real>
 					</array>
 					<array>
-						<real>318.7139892578125</real>
-						<real>13.621518135070801</real>
+						<real>943.25128173828125</real>
+						<real>15.82093334197998</real>
 					</array>
 					<array>
-						<real>3.0074875354766846</real>
-						<real>14.301156997680664</real>
+						<real>5.0676264762878418</real>
+						<real>14.433924674987793</real>
 					</array>
 					<array>
 						<real>0.0</real>
@@ -168,7 +168,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>groundrightside.png</string>
+					<string>groundleft.png</string>
 				</array>
 			</dict>
 			<dict>

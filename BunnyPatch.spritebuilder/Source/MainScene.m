@@ -27,13 +27,16 @@
     
     CGPoint foxWorldPostion = [physicsNode convertToWorldSpace:fox.position];
     CGPoint foxScreenPosition = [self convertToNodeSpace:foxWorldPostion];
-     if(foxScreenPosition.x+50 < -(fox.contentSize.width)){
-         fox.position = ccp(fox.position.x + 1500.f + arc4random_uniform((u_int32_t)1500),fox.position.y);
-     }
-     else{
-         
-         fox.position = ccp(fox.position.x - scrollSpeed*(CGFloat) delta, fox.position.y);
-     }
+    if(foxScreenPosition.x+50 < -(fox.contentSize.width)){
+        fox.position = ccp(fox.position.x + 1500.f + arc4random_uniform((u_int32_t)1500),100.f);
+    }
+    else if(foxScreenPosition.y < 20){
+        [fox.physicsBody applyImpulse:ccp(500, 3000)];
+    }
+    else{
+        
+        fox.position = ccp(fox.position.x - scrollSpeed*(CGFloat) delta, fox.position.y);
+    }
     
     
     CGPoint bunnyWorldPosition = [physicsNode convertToWorldSpace:bunny.position];
@@ -176,14 +179,14 @@
     grounds = [NSArray arrayWithObjects:ground, ground1, nil];
     backgrounds = [NSArray arrayWithObjects:background, background1, nil];
     gameStarted = NO;
-    
+    score = 0;
     [startButton setVisible:true];
 }
 
 -(void)play{
     gameStarted = YES;
     [startButton setVisible:false];
-    
+    [scoreLabel setVisible:true];
     
     cliffLeft = (CCSprite*)[CCBReader load:@"cliffLeft"];
     cliffRight = (CCSprite*)[CCBReader load:@"cliffRight"];
@@ -236,7 +239,9 @@
 
     [berry removeFromParent];
     [berries removeObject:berry];
+    score = score + 1;
     NSLog(@"%f", self->bunny.contentSize.height);
+    [scoreLabel setString:[NSString stringWithFormat:@"Current Score: %d",score]];
     if(self->bunny.scale < 0.9)
         self->bunny.scale = self->bunny.scale*1.05;
         [self->bunny setContentSizeInPoints: CGSizeMake(self->bunny.contentSize.width*1.05, self->bunny.contentSize.height*1.05)];

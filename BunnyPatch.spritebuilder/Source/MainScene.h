@@ -20,7 +20,7 @@
     CCSprite * fox;
     CCButton * startButton;
     CCButton * restartButton;
-
+    CCLabelTTF * scoreLabel;
     CCSprite * cliffLeft;
     CCSprite * cliffRight;
     
@@ -30,6 +30,8 @@
     NSMutableArray * berries;
     
     BOOL gameStarted;
+    
+    int score;
     
 }
 

@@ -720,14 +720,6 @@
 				<array>
 					<dict>
 						<key>name</key>
-						<string>visible</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>name</string>
 						<key>type</key>
 						<string>StringSimple</string>
@@ -741,8 +733,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>68.964813232421875</real>
-							<real>114.25894165039062</real>
+							<real>330</real>
+							<real>145</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -755,8 +747,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>-3.0839197635650635</real>
-							<real>0.63154298067092896</real>
+							<real>0.5</real>
+							<real>0.5</real>
 						</array>
 					</dict>
 					<dict>
@@ -766,8 +758,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.5</real>
+							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -790,8 +782,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
-							<real>40</real>
+							<real>1320</real>
+							<real>800</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -824,7 +816,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Start</string>
+							<string></string>
 							<false/>
 						</array>
 					</dict>
@@ -836,7 +828,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>titlescreen.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -847,7 +839,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonHighlighted.png</string>
+							<string>titlescreen.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -871,7 +863,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>titlescreen.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -890,7 +882,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>titlescreen.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1034,6 +1026,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

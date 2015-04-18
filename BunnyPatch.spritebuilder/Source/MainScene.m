@@ -28,7 +28,7 @@
     CGPoint foxWorldPostion = [physicsNode convertToWorldSpace:fox.position];
     CGPoint foxScreenPosition = [self convertToNodeSpace:foxWorldPostion];
      if(foxScreenPosition.x+50 < -(fox.contentSize.width)){
-         fox.position = ccp(fox.position.x + 900.f,fox.position.y);
+         fox.position = ccp(fox.position.x + 1500.f + arc4random_uniform((u_int32_t)1500),fox.position.y);
      }
      else{
          
@@ -141,17 +141,17 @@
     }
     
     //don't allow double jumps on bunny
-//    CGFloat temp = bunny.position.y - bunny.contentSize.height/2;
-//    CGFloat temp2 = ground.position.y + ground.contentSize.height/2;
-//    
-//    if (temp <= temp2) {
-//        
-//        self.userInteractionEnabled = YES;
-//
-//    }
-//    else{
-//        self.userInteractionEnabled = NO;
-//    }
+    CGFloat temp = bunny.position.y - bunny.contentSize.height/2;
+    CGFloat temp2 = ground.position.y + ground.contentSize.height/2;
+    
+    if (temp <= temp2) {
+        
+        self.userInteractionEnabled = YES;
+
+    }
+    else{
+        self.userInteractionEnabled = NO;
+    }
     if (self->bunny.scale > .5 ) {
         self->bunny.scale = self->bunny.scale*.9995;
     }

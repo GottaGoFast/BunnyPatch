@@ -29,11 +29,14 @@
     NSMutableArray * trees;
     NSMutableArray * berries;
     
+    BOOL gameStarted;
+    
 }
 
 -(void) update:(CCTime)delta;
 -(void)didLoadFromCCB;
 - (void)spawnNewTrees;
 -(void)play;
+-(void)setGameOver;
 -(void)restart;
 @end

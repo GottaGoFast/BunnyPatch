@@ -7,11 +7,24 @@
 
 
 -(void)update:(CCTime)delta{
-    CGPoint bunnyWorldPosition = [physicsNode convertToWorldSpace:bunny.position];
-    CGPoint bunnyScreenPosition = [self convertToNodeSpace:bunnyWorldPosition];
+    
+    if (!gameStarted){
+        return;
+    }
+
+    if (bunny.position.y < 0){
+        NSLog(@"Bunny died");
+        
+        [self setGameOver];
+        return;
+    }
 
     
     physicsNode.position = ccp(physicsNode.position.x - scrollSpeed * delta, physicsNode.position.y);
+    
+    
+    
+    
     CGPoint foxWorldPostion = [physicsNode convertToWorldSpace:fox.position];
     CGPoint foxScreenPosition = [self convertToNodeSpace:foxWorldPostion];
      if(foxScreenPosition.x+50 < -(fox.contentSize.width)){
@@ -22,35 +35,49 @@
          fox.position = ccp(fox.position.x - scrollSpeed*(CGFloat) delta, fox.position.y);
      }
     
+    
+    CGPoint bunnyWorldPosition = [physicsNode convertToWorldSpace:bunny.position];
+    CGPoint bunnyScreenPosition = [self convertToNodeSpace:bunnyWorldPosition];
     bunny.position = ccp(bunny.position.x + bunnySpeed*delta, bunny.position.y );
     if (bunnyScreenPosition.x > 400 && bunnyScreenPosition.y < 100) {
-        scrollSpeed = 1.1*scrollSpeed;
+        scrollSpeed = 1.05*scrollSpeed;
     }
     else if (bunnyScreenPosition.x < 100){
         scrollSpeed = scrollConst;
     }
     
     
+    
+    
     //loop ground
     for ( CCSprite* n in grounds){
         CGPoint  groundWorldPosition = [physicsNode convertToWorldSpace:n.position];
-        //NSLog(@"%f", groundWorldPostion.y);
-
         
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
         
- 
-        
+        int cliff_rand = 3; //arc4random_uniform((u_int32_t)4);
         
         if (groundScreenPosition.x <= -1*n.contentSize.width) {
-            
             n.position = ccp(n.position.x+n.contentSize.width*2, n.position.y);
             
-
-            //cliffRight.position = ccp(n.position.x+n.contentSize.width*2, n.position.y);
-            //cliffLeft.position = ccp(n.position.x+n.contentSize.width*2+cliffRight.contentSize.width, n.position.y);
-
-
+            if (cliff_rand == 3){
+                [n setVisible:NO];
+                n.physicsBody.sensor = YES;
+                [cliffLeft setVisible:YES];
+                [cliffRight setVisible:YES];
+                cliffLeft.position = ccp(n.position.x+n.contentSize.width*2, n.position.y);
+                cliffRight.position = ccp(n.position.x+n.contentSize.width*2 + 300, n.position.y);
+            }
+            
+            else{
+                [n setVisible:YES];
+                n.physicsBody.sensor = NO;
+                [cliffLeft setVisible:NO];
+                [cliffRight setVisible:NO];
+            }
+            
+            
+            
         }
         
     }
@@ -114,17 +141,17 @@
     }
     
     //don't allow double jumps on bunny
-    CGFloat temp = bunny.position.y - bunny.contentSize.height/2;
-    CGFloat temp2 = ground.position.y + ground.contentSize.height/2;
-    
-    if (temp <= temp2) {
-        
-        self.userInteractionEnabled = YES;
-
-    }
-    else{
-        self.userInteractionEnabled = NO;
-    }
+//    CGFloat temp = bunny.position.y - bunny.contentSize.height/2;
+//    CGFloat temp2 = ground.position.y + ground.contentSize.height/2;
+//    
+//    if (temp <= temp2) {
+//        
+//        self.userInteractionEnabled = YES;
+//
+//    }
+//    else{
+//        self.userInteractionEnabled = NO;
+//    }
     if (self->bunny.scale > .5 ) {
         self->bunny.scale = self->bunny.scale*.9995;
     }
@@ -138,6 +165,7 @@
     trees = [NSMutableArray array];
     grounds = [NSArray arrayWithObjects:ground, ground1, nil];
     backgrounds = [NSArray arrayWithObjects:background, background1, nil];
+    gameStarted = NO;
     
     [startButton setVisible:true];
     
@@ -145,30 +173,44 @@
 }
 
 -(void)play{
+    gameStarted = YES;
     [startButton setVisible:false];
-    bunny = (CCSprite*) [CCBReader load:@"Bunny"];
+    
+    
     cliffLeft = (CCSprite*)[CCBReader load:@"cliffLeft"];
     cliffRight = (CCSprite*)[CCBReader load:@"cliffRight"];
-    bunny.scale = 0.5;
-    
-    //bunny.position = [self convertToNodeSpaceAR: ccp(100, 100) ];
-    bunny.position = ccp(100, 100);
-    [physicsNode addChild:bunny z:500];
+    cliffRight.scaleY = 2;
+    cliffLeft.scaleY = 2;
     [physicsNode addChild:cliffRight];
+    [physicsNode addChild:cliffLeft];
+    [cliffRight setVisible:NO];
+    [cliffLeft setVisible:NO];
+    
+    
+    bunny = (CCSprite*) [CCBReader load:@"Bunny"];
+    bunny.scale = 0.5;
+    [physicsNode addChild:bunny z:500];
+    bunny.position = [self convertToNodeSpaceAR: ccp(100, 100) ];
+    bunnySpeed = scrollSpeed;
+    bunny.physicsBody.collisionType = @"bunny";
+    
     
     self.userInteractionEnabled = YES;
     
     [self spawnNewTrees];
     [self spawnNewTrees];
     
-    bunnySpeed = scrollSpeed;
+    
     
     physicsNode.collisionDelegate = self;
     
-    bunny.physicsBody.collisionType = @"bunny";
+   
     
     for(CCSprite * gr in  grounds){
+        gr.physicsBody.sensor = YES;
         gr.physicsBody.collisionType = @"ground";
+
+        
     }
     self->fox =  (CCSprite*)[CCBReader load:@"Fox"];
     [physicsNode addChild: fox z:10];
@@ -207,7 +249,6 @@
     
     //[self->bunny removeFromParent];
     //[restartButton setVisible:true];
-    NSLog(@"fox touched bunny");
     return FALSE;
 }
 
@@ -266,6 +307,12 @@
     [physicsNode addChild:berry z: 9];
     [berries addObject: berry];
     
+}
+-(void)setGameOver{
+    [restartButton setVisible:YES];
+    [self->fox removeFromParent];
+    [self->bunny removeFromParent];
+    self->gameStarted = NO;
 }
 
 @end

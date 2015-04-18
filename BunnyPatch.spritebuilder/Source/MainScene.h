@@ -39,4 +39,5 @@
 -(void)play;
 -(void)setGameOver;
 -(void)restart;
+-(void)removeBerries;
 @end

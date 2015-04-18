@@ -160,6 +160,10 @@
     }
 }
 
+-(void)removeBerries{
+    
+}
+
 -(void)didLoadFromCCB{
     firstTreePos = 280.f;
     foxPos = 960.f;
@@ -262,7 +266,7 @@
     CCAnimationManager* animationManager = bunny.userObject;
     [animationManager runAnimationsForSequenceNamed:@"bunnyHop"];
     
-    [bunny.physicsBody applyImpulse:ccp(1500*self->bunny.scale, 9000.f*self->bunny.scale)];
+    [bunny.physicsBody applyImpulse:ccp(1000, 6000)];
 }
 
 -(void)spawnNewFox{
@@ -279,7 +283,7 @@
     
     CGFloat prevTreeXPos = prevTree.position.x;
     
-    distBtwnTrees = arc4random_uniform((u_int32_t)200)+ 320.f;
+    distBtwnTrees = arc4random_uniform((u_int32_t)200)+ 400.f;
     
     if(!prevTree){
         prevTreeXPos = firstTreePos;

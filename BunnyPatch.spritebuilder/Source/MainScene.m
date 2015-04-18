@@ -7,7 +7,7 @@
 
 
 -(void)update:(CCTime)delta{
-    
+    NSLog(@"fox position is %f", self->fox.position.x);
     if (!gameStarted){
         return;
     }
@@ -28,10 +28,10 @@
     CGPoint foxWorldPostion = [physicsNode convertToWorldSpace:fox.position];
     CGPoint foxScreenPosition = [self convertToNodeSpace:foxWorldPostion];
     if(foxScreenPosition.x+50 < -(fox.contentSize.width)){
-        fox.position = ccp(fox.position.x + 1500.f + arc4random_uniform((u_int32_t)1500),100.f);
+        fox.position = ccp(fox.position.x + 1200.f,100.f);
     }
     else if(foxScreenPosition.y < 20){
-        [fox.physicsBody applyImpulse:ccp(500, 3000)];
+        [fox.physicsBody applyImpulse:ccp(500, 2000)];
     }
     else{
         
@@ -250,9 +250,15 @@
 }
 
 -(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny fox:(CCNode *)fox{
+    if(abs(self->fox.position.y-self->bunny.position.y)/(self->fox.position.x-self->bunny.position.x)>0.3||self->bunny.position.x > self->fox.position.x){
+        self->fox.position = ccp(self->fox.position.x + 1200.f,100.f);
+        return TRUE;
+    }
+    else{
+        [self->bunny removeFromParent];
+        [restartButton setVisible:true];
+    }
     
-    //[self->bunny removeFromParent];
-    //[restartButton setVisible:true];
     return FALSE;
 }
 

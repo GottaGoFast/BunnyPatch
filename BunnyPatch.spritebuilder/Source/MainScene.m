@@ -7,7 +7,7 @@
 
 
 -(void)update:(CCTime)delta{
-    NSLog(@"fox position is %f", self->fox.position.x);
+    //NSLog(@"fox position is %f", self->fox.position.x);
     if (!gameStarted){
         return;
     }
@@ -133,10 +133,8 @@
     CGFloat temp2 = ground.position.y + ground.contentSize.height/2;
     
     if (temp <= temp2) {
-        
 
         self.userInteractionEnabled = YES;
-
 
     }
     else{
@@ -245,15 +243,44 @@
     return FALSE;
     
 }
-
--(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny fox:(CCNode *)fox{
-    if(abs(self->fox.position.y-self->bunny.position.y)/(self->fox.position.x-self->bunny.position.x)>0.3||self->bunny.position.x > self->fox.position.x){
-        self->fox.position = ccp(self->fox.position.x + 1200.f,100.f);
+-(void)resetFox{
+    self->fox.position = ccp(self->fox.position.x + 1200.f,100.f);
+    CCAnimationManager* animationManager = self->fox.userObject;
+    [animationManager runAnimationsForSequenceNamed:@"Default Timeline"];
+    NSLog(@"%f, %f", fox.position.x, fox.position.y);
+}
+-(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair typeA:(CCNode *)nodeA typeB:(CCNode *)nodeB{
+    if(fabs(self->fox.position.y-self->bunny.position.y)/(self->fox.position.x-self->bunny.position.x)>0.3||self->bunny.position.x > self->fox.position.x){
+        [self resetFox];
+        
         return TRUE;
     }
-    else{
-        [self->bunny removeFromParent];
-        [restartButton setVisible:true];
+    
+    return FALSE;
+    
+}
+
+-(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny fox:(CCNode *)fox{
+    if(((self->fox.position.y-self->bunny.position.y)/(self->fox.position.x-self->bunny.position.x)>0.3||self->bunny.position.x > self->fox.position.x) && self->gameStarted){
+        CCAnimationManager* animationManager = self->fox.userObject;
+        [animationManager runAnimationsForSequenceNamed:@"foxSquashed"];
+        
+        return TRUE;
+    }
+    else if (self->gameStarted){
+        
+        [self->fox setZOrder:600];
+        self->gameStarted = NO;
+        //self->bunny.position = ccp(self->bunny.position.x - 10, self->bunny.position.y );
+        CCAnimationManager* animationManager2 = self->bunny.userObject;
+        [animationManager2 runAnimationsForSequenceNamed:@"bunnyAttacked"];
+        
+        
+        CCAnimationManager* animationManager = self->fox.userObject;
+        [animationManager performSelector:@selector(runAnimationsForSequenceNamed: ) withObject:@"attackBunny" afterDelay:.15];
+        //self->fox.position = ccp(self->fox.position.x - 10, self->fox.position.y );
+        [self performSelector:@selector(setGameOver) withObject:self afterDelay:0.7];
+        
     }
     
     return FALSE;
@@ -309,7 +336,7 @@
     
     
     
-    int numOfBerries = 2; //arc4random_uniform((u_int32_t)4);
+    int numOfBerries = arc4random_uniform((u_int32_t)4);
     int lowerBoundY = -newTree.contentSize.height/2*newTree.scaleY+40;
     int upperBoundY = newTree.contentSize.height/2*newTree.scaleY;
     
@@ -348,9 +375,9 @@
 }
 -(void)setGameOver{
     [restartButton setVisible:YES];
-    [self->fox removeFromParent];
+    //[self->fox removeFromParent];
     [self->bunny removeFromParent];
-    self->gameStarted = NO;
+    
     self.userInteractionEnabled = NO;
 }
 

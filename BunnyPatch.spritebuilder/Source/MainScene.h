@@ -42,4 +42,5 @@
 -(void)setGameOver;
 -(void)restart;
 -(void)removeBerries;
+-(void)resetFox;
 @end

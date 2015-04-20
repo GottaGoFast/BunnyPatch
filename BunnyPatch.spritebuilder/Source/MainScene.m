@@ -129,17 +129,17 @@
 
     
     //don't allow double jumps on bunny
-    CGFloat temp = bunny.position.y - bunny.contentSize.height/2;
-    CGFloat temp2 = ground.position.y + ground.contentSize.height/2;
+//    CGFloat temp = bunny.position.y - bunny.contentSize.height/2;
+//    CGFloat temp2 = ground.position.y + ground.contentSize.height/2;
     
-    if (temp <= temp2) {
+//    if (temp <= temp2) {
 
-        self.userInteractionEnabled = YES;
+//        self.userInteractionEnabled = YES;
 
-    }
-    else{
-        self.userInteractionEnabled = NO;
-    }
+//    }
+//   else{
+//        self.userInteractionEnabled = NO;
+//    }
     if (self->bunny.scale > .5 ) {
         self->bunny.scale = self->bunny.scale*.9995;
     }
@@ -191,7 +191,8 @@
     cliffLeft.scaleY = 2;
     [physicsNode addChild:cliffRight];
     [physicsNode addChild:cliffLeft];
-
+    cliffLeft.physicsBody.collisionType = @"ground";
+    cliffRight.physicsBody.collisionType = @"ground";
     
     
     bunny = (CCSprite*) [CCBReader load:@"Bunny"];
@@ -237,7 +238,7 @@
     [berries removeObject:berry];
     score = score + 1;
     [scoreLabel setString:[NSString stringWithFormat:@"Current Score: %d",score]];
-    if(self->bunny.scale < 0.9)
+    if(self->bunny.scale < 1.0)
         self->bunny.scale = self->bunny.scale*1.05;
         [self->bunny setContentSizeInPoints: CGSizeMake(self->bunny.contentSize.width*1.05, self->bunny.contentSize.height*1.05)];
     return FALSE;
@@ -260,6 +261,11 @@
     
 }
 
+-(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny ground:(CCNode *)ground{
+    self.userInteractionEnabled = true;
+    return TRUE;
+}
+
 -(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny fox:(CCNode *)fox{
     if(((self->fox.position.y-self->bunny.position.y)/(self->fox.position.x-self->bunny.position.x)>0.3||self->bunny.position.x > self->fox.position.x) && self->gameStarted){
         CCAnimationManager* animationManager = self->fox.userObject;
@@ -280,6 +286,7 @@
         [animationManager performSelector:@selector(runAnimationsForSequenceNamed: ) withObject:@"attackBunny" afterDelay:.15];
         //self->fox.position = ccp(self->fox.position.x - 10, self->fox.position.y );
         [self performSelector:@selector(setGameOver) withObject:self afterDelay:0.7];
+        self.userInteractionEnabled = false;
         
     }
     
@@ -288,7 +295,7 @@
 
 -(void) touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
     
-    self.userInteractionEnabled = NO;
+    
    
     CCAnimationManager* animationManager = bunny.userObject;
     [animationManager runAnimationsForSequenceNamed:@"bunnyPrep"];
@@ -297,6 +304,7 @@
 }
 
 -(void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
+    self.userInteractionEnabled = NO;
     CCAnimationManager* animationManager = bunny.userObject;
     [animationManager runAnimationsForSequenceNamed:@"bunnyHop"];
     
@@ -321,8 +329,7 @@
     
     if(!prevTree){
         prevTreeXPos = firstTreePos;
-        
-    }
+     }
     
     CCNode * newTree = [CCBReader load:@"Tree"];
     

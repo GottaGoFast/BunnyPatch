@@ -70,7 +70,7 @@
 							<key>name</key>
 							<string>spriteFrame</string>
 							<key>time</key>
-							<real>0.26666668057441711</real>
+							<real>0.20000000298023224</real>
 							<key>type</key>
 							<integer>7</integer>
 							<key>value</key>
@@ -88,7 +88,7 @@
 							<key>name</key>
 							<string>spriteFrame</string>
 							<key>time</key>
-							<real>0.5</real>
+							<real>0.43333333730697632</real>
 							<key>type</key>
 							<integer>7</integer>
 							<key>value</key>
@@ -106,7 +106,7 @@
 							<key>name</key>
 							<string>spriteFrame</string>
 							<key>time</key>
-							<real>0.73333334922790527</real>
+							<real>0.66666668653488159</real>
 							<key>type</key>
 							<integer>7</integer>
 							<key>value</key>
@@ -124,7 +124,7 @@
 							<key>name</key>
 							<string>spriteFrame</string>
 							<key>time</key>
-							<real>0.96666663885116577</real>
+							<real>0.89999997615814209</real>
 							<key>type</key>
 							<integer>7</integer>
 							<key>value</key>
@@ -429,8 +429,6 @@
 				<array/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 		<key>seqExpanded</key>
 		<true/>
 	</dict>
@@ -486,9 +484,9 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.019050359725952148</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>1</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

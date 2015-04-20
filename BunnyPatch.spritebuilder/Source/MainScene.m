@@ -31,8 +31,8 @@
 //        fox.position = ccp(fox.position.x + 1200.f,100.f);
 //    }
     if(foxScreenPosition.y < 20){
-        //[fox.physicsBody applyImpulse:ccp(500, 2000)];
-        foxScreenPosition.y = 50;
+        [fox.physicsBody applyImpulse:ccp(500, 2000)];
+        //fox.position = ccp(fox.position.x - scrollConst*(CGFloat) delta, 50);
     }
     else{
     
@@ -61,7 +61,6 @@
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
         
         int cliff_rand = arc4random_uniform((u_int32_t)2);
-        int fox_rand = 2; //arc4random_uniform((u_int32_t)4);
         int cliff_size = arc4random_uniform((u_int32_t)10) + 15;
         
         if (groundScreenPosition.x <= -1*n.contentSize.width) {
@@ -86,15 +85,6 @@
             //CGPoint foxWorldPostion = [physicsNode convertToWorldSpace:fox.position];
             //CGPoint foxScreenPosition = [self convertToNodeSpace:foxWorldPostion];
             
-            if(fox_rand >= 2 && foxScreenPosition.x <= -1*fox.contentSize.width){
-                [fox setVisible:YES];
-                fox.physicsBody.sensor = NO;
-                fox.position = ccp(n.position.x, n.position.y);
-                NSLog(@"fox: %f, %f", fox.position.x, fox.position.y);
-            }
-            
-            
-            
         }
         
     }
@@ -107,9 +97,18 @@
         
         if (groundScreenPosition.x <= -1*n.contentSize.width*n.scaleX) {
             n.position = ccp(n.position.x+n.contentSize.width*n.scaleX*2, n.position.y);
+            int fox_rand = 2; //arc4random_uniform((u_int32_t)4);
             
-            
+            if(fox_rand >= 2 && foxScreenPosition.x <= -1*fox.contentSize.width){
+                //[fox setVisible:YES];
+                //fox.physicsBody.sensor = NO;
+                fox.position = ccp(n.position.x, fox.position.y);
+                CCAnimationManager* animationManager = self->fox.userObject;
+                [animationManager runAnimationsForSequenceNamed:@"Default Timeline"];
+                NSLog(@"fox: %f, %f", fox.position.x, fox.position.y);
+            }
         }
+
     }
  
     
@@ -233,8 +232,8 @@
     [physicsNode addChild: fox z:10];
     [self spawnNewFox];
     fox.physicsBody.collisionType = @"fox";
-    [fox setVisible:YES];
-    fox.physicsBody.sensor = NO;
+    //[fox setVisible:YES];
+    //fox.physicsBody.sensor = NO;
 }
 
 -(void)restart{
@@ -261,8 +260,8 @@
         //self->fox.position = ccp(self->fox.position.x + 1200.f,100.f);
         CCAnimationManager* animationManager = self->fox.userObject;
         [animationManager runAnimationsForSequenceNamed:@"Default Timeline"];
-        [self->fox setVisible:NO];
-        fox.physicsBody.sensor = YES;
+        //[self->fox setVisible:NO];
+        //fox.physicsBody.sensor = YES;
         //NSLog(@"%f, %f", fox.position.x, fox.position.y);
     }
 }
@@ -272,7 +271,7 @@
         CCAnimationManager* animationManager = self->fox.userObject;
         [animationManager runAnimationsForSequenceNamed:@"foxSquashed"];
         [self->bunny.physicsBody applyImpulse:ccp(300, 100)];
-        [self performSelector:@selector(resetFox) withObject:self afterDelay:.2];
+        //[self performSelector:@selector(resetFox) withObject:self afterDelay:.2];
     }
     return YES;
 }
@@ -307,7 +306,7 @@
     return NO;
 }
 
--(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair fox:(CCNode *)nodeA ground:(CCNode *)nodeB{
+-(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair fox:(CCNode *)nodeA ground:(CCNode *)nodeB{
     return YES;
 }
 

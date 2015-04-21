@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>57</integer>
+	<integer>59</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -733,9 +733,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>330</real>
-							<real>145</real>
-							<integer>0</integer>
+							<real>295.62155151367188</real>
+							<real>148.35655212402344</real>
+							<integer>1</integer>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -758,8 +758,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.5</real>
+							<real>1.5277599096298218</real>
+							<real>1.351309061050415</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -782,8 +782,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>1320</real>
-							<real>800</real>
+							<real>387</real>
+							<real>277</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -828,7 +828,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>titlescreen.png</string>
+							<string>startButtonAdjusted.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -839,7 +839,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>titlescreen.png</string>
+							<string>startButtonAdjusted.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -863,7 +863,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>titlescreen.png</string>
+							<string>startButtonAdjusted.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -882,7 +882,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>titlescreen.png</string>
+							<string>startButtonAdjusted.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1403,9 +1403,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>454.00006103515625</real>
-							<real>291</real>
-							<integer>0</integer>
+							<real>50</real>
+							<real>29</real>
+							<integer>1</integer>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -1417,7 +1417,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>0.0</real>
 							<real>0.5</real>
 						</array>
 					</dict>
@@ -1577,8 +1577,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

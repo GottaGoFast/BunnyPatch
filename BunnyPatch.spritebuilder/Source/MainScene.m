@@ -8,7 +8,13 @@
 
 -(void)update:(CCTime)delta{
     //NSLog(@"fox position is %f", self->fox.position.x);
+    CGPoint foxWorldPostion = [physicsNode convertToWorldSpace:fox.position];
+    CGPoint foxScreenPosition = [self convertToNodeSpace:foxWorldPostion];
+    
     if (!gameStarted){
+        if (foxScreenPosition.x > 300){
+            physicsNode.position = ccp(physicsNode.position.x - scrollSpeed * delta, physicsNode.position.y);
+        }
         return;
     }
 
@@ -23,10 +29,6 @@
     physicsNode.position = ccp(physicsNode.position.x - scrollSpeed * delta, physicsNode.position.y);
     
     
-    
-    
-    CGPoint foxWorldPostion = [physicsNode convertToWorldSpace:fox.position];
-    CGPoint foxScreenPosition = [self convertToNodeSpace:foxWorldPostion];
 //    if(foxScreenPosition.x+50 < -(fox.contentSize.width)){
 //        fox.position = ccp(fox.position.x + 1200.f,100.f);
 //    }
@@ -45,7 +47,7 @@
     CGPoint bunnyScreenPosition = [self convertToNodeSpace:bunnyWorldPosition];
     bunny.position = ccp(bunny.position.x + bunnySpeed*delta, bunny.position.y );
     if (bunnyScreenPosition.x > 400 && bunnyScreenPosition.y < 100) {
-        scrollSpeed = 1.05*scrollSpeed;
+        scrollSpeed = 1.06*scrollSpeed;
     }
     else if (bunnyScreenPosition.x < 100){
         scrollSpeed = scrollConst;
@@ -153,6 +155,11 @@
 //   else{
 //        self.userInteractionEnabled = NO;
 //    }
+    if (bunny.scale>.5) {
+       // bunny.scale = bunny.scale*0.995;
+    }
+    
+
 
 }
 
@@ -265,15 +272,14 @@
         //NSLog(@"%f, %f", fox.position.x, fox.position.y);
     }
 }
--(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)nodeA fox:(CCNode *)nodeB{
+-(void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)nodeA fox:(CCNode *)nodeB{
     
     if (gameStarted) {
         CCAnimationManager* animationManager = self->fox.userObject;
         [animationManager runAnimationsForSequenceNamed:@"foxSquashed"];
-        [self->bunny.physicsBody applyImpulse:ccp(300, 100)];
+        [self->bunny.physicsBody applyImpulse:ccp(400, 1000)];
         //[self performSelector:@selector(resetFox) withObject:self afterDelay:.2];
     }
-    return YES;
 }
 
 -(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny ground:(CCNode *)ground{
@@ -282,7 +288,7 @@
 }
 
 -(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny fox:(CCNode *)fox{
-    if((fabs(self->fox.position.y-self->bunny.position.y)/(self->fox.position.x-self->bunny.position.x)>0.3||self->bunny.position.x > self->fox.position.x) && self->gameStarted){
+    if((self->bunny.position.x > self->fox.position.x) && self->gameStarted){
 
         return YES;
     }
@@ -294,11 +300,14 @@
         CCAnimationManager* animationManager2 = self->bunny.userObject;
         [animationManager2 runAnimationsForSequenceNamed:@"bunnyAttacked"];
         
-        
+        self->bunny.position = ccp(self->bunny.position.x - 30, self->bunny.position.y );
         CCAnimationManager* animationManager = self->fox.userObject;
         [animationManager performSelector:@selector(runAnimationsForSequenceNamed: ) withObject:@"attackBunny" afterDelay:.15];
-        //self->fox.position = ccp(self->fox.position.x - 10, self->fox.position.y );
-        [self performSelector:@selector(setGameOver) withObject:self afterDelay:0.7];
+        [self performSelector:@selector(setGameOver) withObject:self afterDelay:0.6];
+        
+        self->fox.position = ccp(self->fox.position.x - 50, self->fox.position.y );
+        [animationManager performSelector:@selector(runAnimationsForSequenceNamed: ) withObject:@"foxWins" afterDelay:.4];
+        
         self.userInteractionEnabled = false;
         
         
@@ -312,20 +321,27 @@
 
 -(void) touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
     
-    
+    if (gameStarted){
    
-    CCAnimationManager* animationManager = bunny.userObject;
-    [animationManager runAnimationsForSequenceNamed:@"bunnyPrep"];
+        CCAnimationManager* animationManager = bunny.userObject;
+        [animationManager runAnimationsForSequenceNamed:@"bunnyPrep"];
+        if (bunny.scale>.5) {
+           // bunny.scale = bunny.scale*0.8;
+        }
+    }
     
     
 }
 
 -(void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
-    self.userInteractionEnabled = NO;
-    CCAnimationManager* animationManager = bunny.userObject;
-    [animationManager runAnimationsForSequenceNamed:@"bunnyHop"];
-    
-    [bunny.physicsBody applyImpulse:ccp(800, 2800)];
+    if (gameStarted) {
+        self.userInteractionEnabled = NO;
+        CCAnimationManager* animationManager = bunny.userObject;
+        [animationManager runAnimationsForSequenceNamed:@"bunnyHop"];
+        
+        [bunny.physicsBody applyImpulse:ccp(600, 2500)];
+    }
+
 }
 
 -(void)spawnNewFox{

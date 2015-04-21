@@ -10,13 +10,13 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>4</integer>
+	<integer>6</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>docDimensionsType</key>
 	<integer>1</integer>
 	<key>fileType</key>
@@ -164,24 +164,6 @@
 								<string>Use regular file</string>
 							</array>
 						</dict>
-						<dict>
-							<key>easing</key>
-							<dict>
-								<key>type</key>
-								<integer>0</integer>
-							</dict>
-							<key>name</key>
-							<string>spriteFrame</string>
-							<key>time</key>
-							<real>0.46666666865348816</real>
-							<key>type</key>
-							<integer>7</integer>
-							<key>value</key>
-							<array>
-								<string>gameoverimage.png</string>
-								<string>Use regular file</string>
-							</array>
-						</dict>
 					</array>
 					<key>name</key>
 					<string>spriteFrame</string>
@@ -209,7 +191,38 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>foxsquished.png</string>
+								<string>foxsquishedflatter.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
+					</array>
+					<key>name</key>
+					<string>spriteFrame</string>
+					<key>type</key>
+					<integer>7</integer>
+				</dict>
+			</dict>
+			<key>3</key>
+			<dict>
+				<key>spriteFrame</key>
+				<dict>
+					<key>keyframes</key>
+					<array>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.0</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>gameoverimage.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -260,20 +273,12 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>78.66015625</real>
-					<real>34.44921875</real>
+					<real>67.97265625</real>
+					<real>38.84765625</real>
 				</array>
 				<array>
-					<real>137.375</real>
-					<real>33.75390625</real>
-				</array>
-				<array>
-					<real>201.36186218261719</real>
-					<real>53.139301300048828</real>
-				</array>
-				<array>
-					<real>218.78752136230469</real>
-					<real>51.377586364746094</real>
+					<real>241.30078125</real>
+					<real>36.32421875</real>
 				</array>
 				<array>
 					<real>201.93122863769531</real>
@@ -284,31 +289,43 @@
 					<real>3.7576944828033447</real>
 				</array>
 				<array>
-					<real>27.212623596191406</real>
-					<real>4.6691899299621582</real>
+					<real>30.44921875</real>
+					<real>5.47265625</real>
+				</array>
+				<array>
+					<real>-10.659370422363281</real>
+					<real>40.4140625</real>
 				</array>
 			</array>
 			<key>polygons</key>
 			<array>
 				<array>
 					<array>
-						<real>137.375</real>
-						<real>33.75390625</real>
+						<real>201.93122863769531</real>
+						<real>10.125396728515625</real>
 					</array>
 					<array>
-						<real>78.66015625</real>
-						<real>34.44921875</real>
+						<real>241.30078125</real>
+						<real>36.32421875</real>
 					</array>
 					<array>
-						<real>27.212623596191406</real>
-						<real>4.6691899299621582</real>
-					</array>
-					<array>
-						<real>196.21714782714844</real>
-						<real>3.7576944828033447</real>
+						<real>67.97265625</real>
+						<real>38.84765625</real>
 					</array>
 				</array>
 				<array>
+					<array>
+						<real>67.97265625</real>
+						<real>38.84765625</real>
+					</array>
+					<array>
+						<real>-10.659370422363281</real>
+						<real>40.4140625</real>
+					</array>
+					<array>
+						<real>30.44921875</real>
+						<real>5.47265625</real>
+					</array>
 					<array>
 						<real>196.21714782714844</real>
 						<real>3.7576944828033447</real>
@@ -316,18 +333,6 @@
 					<array>
 						<real>201.93122863769531</real>
 						<real>10.125396728515625</real>
-					</array>
-					<array>
-						<real>218.78752136230469</real>
-						<real>51.377586364746094</real>
-					</array>
-					<array>
-						<real>201.36186218261719</real>
-						<real>53.139301300048828</real>
-					</array>
-					<array>
-						<real>137.375</real>
-						<real>33.75390625</real>
 					</array>
 				</array>
 			</array>
@@ -363,7 +368,7 @@
 				<string>Point</string>
 				<key>value</key>
 				<array>
-					<real>0.20000000298023224</real>
+					<real>0.30000001192092896</real>
 					<real>0.5</real>
 				</array>
 			</dict>
@@ -393,7 +398,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>foxsquished.png</string>
+					<string>foxsquishedflatter.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -429,6 +434,8 @@
 				<array/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 		<key>seqExpanded</key>
 		<true/>
 	</dict>
@@ -484,9 +491,9 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.019050359725952148</real>
+			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -516,13 +523,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.5</real>
+			<real>0.40000000596046448</real>
 			<key>name</key>
 			<string>attackBunny</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.30000001192092896</real>
+			<real>0.1666666716337204</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -558,13 +565,49 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.10000000149011612</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
 			<real>128</real>
 			<key>sequenceId</key>
 			<integer>2</integer>
+			<key>soundChannel</key>
+			<dict>
+				<key>isExpanded</key>
+				<false/>
+				<key>keyframes</key>
+				<array/>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>autoPlay</key>
+			<false/>
+			<key>callbackChannel</key>
+			<dict>
+				<key>keyframes</key>
+				<array/>
+				<key>type</key>
+				<integer>12</integer>
+			</dict>
+			<key>chainedSequenceId</key>
+			<integer>-1</integer>
+			<key>length</key>
+			<real>0.13333334028720856</real>
+			<key>name</key>
+			<string>foxWins</string>
+			<key>offset</key>
+			<real>0.0</real>
+			<key>position</key>
+			<real>0.0</real>
+			<key>resolution</key>
+			<real>30</real>
+			<key>scale</key>
+			<real>128</real>
+			<key>sequenceId</key>
+			<integer>3</integer>
 			<key>soundChannel</key>
 			<dict>
 				<key>isExpanded</key>

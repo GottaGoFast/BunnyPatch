@@ -23,6 +23,7 @@
     CCLabelTTF * scoreLabel;
     CCSprite * cliffLeft;
     CCSprite * cliffRight;
+    CCParticleSystem *smoke;
     
     NSArray * backgrounds;
     NSArray * grounds;
@@ -30,7 +31,7 @@
     NSMutableArray * berries;
     
     BOOL gameStarted;
-    
+    BOOL foxhit;
     int score;
     
 }
@@ -43,4 +44,5 @@
 -(void)restart;
 -(void)removeBerries;
 -(void)resetFox;
+-(void)smokeOnOff:(BOOL) on;
 @end

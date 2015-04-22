@@ -278,6 +278,41 @@
     return FALSE;
     
 }
+-(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny yellowBerry:(CCNode *)berry{
+    
+    
+    [berry removeFromParent];
+    [berries removeObject:berry];
+    score = score + 1;
+    [scoreLabel setString:[NSString stringWithFormat:@"Current Score: %d",score]];
+    if(self->bunny.scale < 1.0)
+        self->bunny.scale = self->bunny.scale*1.05;
+    [self->bunny setContentSizeInPoints: CGSizeMake(self->bunny.contentSize.width*1.05, self->bunny.contentSize.height*1.05)];
+    if (score%5 == 4){
+        scrollConst += 5;
+        NSLog(@"%f b: %f", scrollConst, bunnySpeed);
+    }
+    return FALSE;
+    
+}
+-(BOOL)ccPhysicsCollisionPreSolve:(CCPhysicsCollisionPair *)pair bunny:(CCNode *)bunny blueBerry:(CCNode *)berry{
+    
+    
+    [berry removeFromParent];
+    [berries removeObject:berry];
+    score = score + 1;
+    [scoreLabel setString:[NSString stringWithFormat:@"Current Score: %d",score]];
+    if(self->bunny.scale < 1.0)
+        self->bunny.scale = self->bunny.scale*1.05;
+    [self->bunny setContentSizeInPoints: CGSizeMake(self->bunny.contentSize.width*1.05, self->bunny.contentSize.height*1.05)];
+    if (score%5 == 4){
+        scrollConst += 5;
+        NSLog(@"%f b: %f", scrollConst, bunnySpeed);
+    }
+    return FALSE;
+    
+}
+
 -(void)resetFox{
     if (gameStarted){
         //self->fox.position = ccp(self->fox.position.x + 1200.f,100.f);
@@ -415,7 +450,21 @@
     int rndValueX = 0;
     
     for (int i = 0; i<numOfBerries; i++) {
-        Berry* berry = (Berry*)[CCBReader load:@"berry"];
+        Berry* berry;
+        int rand = arc4random_uniform((u_int32_t)40);
+        if(rand <= 5){
+            berry = (Berry*)[CCBReader load:@"yellowBerry"];
+           berry.physicsBody.collisionType = @"yellowBerry";
+        }
+        else if(rand >5 && rand <= 10){
+            berry = (Berry*)[CCBReader load:@"blueBerry"];
+             berry.physicsBody.collisionType = @"blueBerry";
+        }
+        else{
+            berry = (Berry*)[CCBReader load:@"berry"];
+             berry.physicsBody.collisionType = @"berry";
+        }
+        
         
         int rndValueY = lowerBoundY + arc4random() % (upperBoundY - lowerBoundY);
 
@@ -436,7 +485,6 @@
         berry.scale = .4;
         berry.position = ccp(newTree.position.x+ rndValueX, newTree.position.y +rndValueY);
         
-        berry.physicsBody.collisionType = @"berry";
         berry.physicsBody.sensor = YES;
         [physicsNode addChild:berry z: 9];
         [berries addObject: berry];

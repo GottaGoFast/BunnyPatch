@@ -283,7 +283,7 @@
     
     [berry removeFromParent];
     [berries removeObject:berry];
-    score = score + 1;
+    score = score - 1;
     [scoreLabel setString:[NSString stringWithFormat:@"Current Score: %d",score]];
     if(self->bunny.scale < 1.0)
         self->bunny.scale = self->bunny.scale*1.05;
@@ -303,8 +303,8 @@
     score = score + 1;
     [scoreLabel setString:[NSString stringWithFormat:@"Current Score: %d",score]];
     if(self->bunny.scale < 1.0)
-        self->bunny.scale = self->bunny.scale*1.05;
-    [self->bunny setContentSizeInPoints: CGSizeMake(self->bunny.contentSize.width*1.05, self->bunny.contentSize.height*1.05)];
+        self->bunny.scale = self->bunny.scale*0.95;
+    [self->bunny setContentSizeInPoints: CGSizeMake(self->bunny.contentSize.width*0.95, self->bunny.contentSize.height*0.95)];
     if (score%5 == 4){
         scrollConst += 5;
         NSLog(@"%f b: %f", scrollConst, bunnySpeed);
